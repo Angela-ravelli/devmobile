@@ -2,10 +2,10 @@ package ufr.mim.devmobile.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val Purple80 = Color(0xFFD0BCFF)
-val PurpleGrey80 = Color(0xFFCCC2DC)
-val Pink80 = Color(0xFFEFB8C8)
+val MainPinkBackground = Color(0xFFF7D9D7)
+val MainPinkText = Color(0xFFD23A2F)
 
-val Purple40 = Color(0xFF6650a4)
-val PurpleGrey40 = Color(0xFF625b71)
-val Pink40 = Color(0xFF7D5260)
+val MainBackground = Color(0xFFFFFFFF)
+val MainText = Color(0xFF000000)
+
+val SearchPlaceholder = Color(0xFFE2A39E)

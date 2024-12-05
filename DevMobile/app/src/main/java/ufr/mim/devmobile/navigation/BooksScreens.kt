@@ -1,4 +1,6 @@
 package ufr.mim.devmobile.navigation
 
-class BooksScreens {
+enum class BooksScreens {
+    HomeScreen,
+    DetailsScreen
 }
