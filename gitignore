@@ -1,0 +1,6 @@
+# Default ignored files
+DevMobile/shelf/
+DevMobile/workspace.xml
+DevMobile/.idea
+DevMobile/app/build/*
+DevMobile/.gradle/*
