@@ -42,60 +42,17 @@ data class MyIcon(
 )
 
 @Composable
-fun BottomBar() {
-    var selectedTab by remember { mutableIntStateOf(0) }
+fun BottomBar(selectedTab : Int, icons : List<MyIcon>) {
 
-    val homeFilled = ImageVector.vectorResource(id = R.drawable.home_filled)
-    val homeOutlined = ImageVector.vectorResource(id = R.drawable.home_outlined)
-    val addFilled = ImageVector.vectorResource(id = R.drawable.add_filled)
-    val addOutlined = ImageVector.vectorResource(id = R.drawable.add_outlined)
-    val bookmarksFilled = ImageVector.vectorResource(id = R.drawable.bookmarks_filled)
-    val bookmarksOutlined = ImageVector.vectorResource(id = R.drawable.bookmarks_outlined)
-    val analyticsFilled = ImageVector.vectorResource(id = R.drawable.analytics_filled)
-    val analyticsOutlined = ImageVector.vectorResource(id = R.drawable.analytics_outlined)
-
-    val icons: List<MyIcon> = listOf(
-        MyIcon(0, { selectedTab = 0 }, homeFilled, homeOutlined),
-        MyIcon(1, { selectedTab = 1 }, addFilled, addOutlined),
-        MyIcon(2, { selectedTab = 2 }, bookmarksFilled, bookmarksOutlined),
-        MyIcon(3, { selectedTab = 3 }, analyticsFilled, analyticsOutlined)
-    )
-
-    Scaffold(
-        topBar = { MyTopBar() },
-        bottomBar = {
-            BottomAppBar(modifier = Modifier.height(80.dp),
-                containerColor = MaterialTheme.colorScheme.primary
-            ) {
-                icons.forEach { icon ->
-                    IconButton(onClick = icon.action, modifier = Modifier.weight(1f)) {
-                        val iconDrawable =
-                            if (selectedTab == icon.index) icon.selectedIcon else icon.unselectedIcon
-                        Icon(iconDrawable, iconDrawable.name)
-                    }
-                }
+    BottomAppBar(modifier = Modifier.height(80.dp),
+        containerColor = MaterialTheme.colorScheme.primary
+    ) {
+        icons.forEach { icon ->
+            IconButton(onClick = icon.action, modifier = Modifier.weight(1f)) {
+                val iconDrawable =
+                    if (selectedTab == icon.index) icon.selectedIcon else icon.unselectedIcon
+                Icon(iconDrawable, iconDrawable.name)
             }
         }
-    ) { paddingValues ->
-        // Section centrale change en fonction de l'onglet
-        Crossfade(
-            targetState = selectedTab,
-            animationSpec = tween(500),
-            label = "Crossfade tabs",
-            modifier = Modifier.padding(paddingValues)
-        ) { tabIndex ->
-            when (tabIndex) {
-                0 -> {
-                    HomeScreen()
-                }
-                1 -> {
-                    BooksNavigationComponent()
-                }
-                2 -> {
-                    ListScreen()
-                }
-            }
-        }}
-
-
+    }
 }
