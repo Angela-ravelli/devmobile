@@ -1,66 +1,178 @@
 [
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_bookmarks_outlined.xml.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\bookmarks_outlined.xml"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/mipmap-anydpi_ic_launcher.xml.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/mipmap-anydpi/ic_launcher.xml"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_l_ile_du_diable.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\l_ile_du_diable.jpg"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/mipmap-hdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_harry_potter_tome_7.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\harry_potter_tome_7.jpg"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_complot.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\complot.jpg"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/drawable/ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_la_face_cachee_de_margo.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\la_face_cachee_de_margo.jpg"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/mipmap-mdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "ufr.mim.devmobile.app-debug-52:/drawable_home_filled.xml.flat",
+        "source": "ufr.mim.devmobile.app-main-54:/drawable/home_filled.xml"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/mipmap-xhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/xml_backup_rules.xml.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/xml/backup_rules.xml"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_lait_et_miel.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\lait_et_miel.jpg"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/drawable_ic_launcher_background.xml.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_laptop_metrics.xml.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\laptop_metrics.xml"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_noa_torson_tome_2.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\noa_torson_tome_2.jpg"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/xml_data_extraction_rules.xml.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/xml/data_extraction_rules.xml"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_add_outlined.xml.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\add_outlined.xml"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/mipmap-anydpi_ic_launcher_round.xml.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/mipmap-anydpi/ic_launcher_round.xml"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\mipmap-anydpi_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\mipmap-anydpi\\ic_launcher_round.xml"
     },
     {
-        "merged": "ufr.mim.devmobile.app-debug-52:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "ufr.mim.devmobile.app-main-54:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_noa_torson_tome_3.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\noa_torson_tome_3.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_harry_potter_tome_1.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\harry_potter_tome_1.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_le_theoreme_des_katherines.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\le_theoreme_des_katherines.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_harry_potter_tome_4.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\harry_potter_tome_4.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\xml\\data_extraction_rules.xml"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_le_cri.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\le_cri.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_add_filled.xml.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\add_filled.xml"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\mipmap-xxxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\mipmap-xxhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_harry_potter_tome_6.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\harry_potter_tome_6.jpg"
+    },
+    {
+        "merged": "ufr.mim.devmobile.app-debug-52:/drawable_home_outlined.xml.flat",
+        "source": "ufr.mim.devmobile.app-main-54:/drawable/home_outlined.xml"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\mipmap-xhdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\mipmap-anydpi_ic_launcher.xml.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\mipmap-anydpi\\ic_launcher.xml"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\mipmap-mdpi\\ic_launcher_round.webp"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_bookmarks_filled.xml.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\bookmarks_filled.xml"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_harry_potter_tome_2.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\harry_potter_tome_2.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_harry_potter_tome_3.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\harry_potter_tome_3.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_qui_es_tu_alaska.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\qui_es_tu_alaska.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_noa_torson_tome_1.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\noa_torson_tome_1.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_danser_sous_la_pluie.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\danser_sous_la_pluie.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_logo.png.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\logo.png"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_ma_maison_en_fleur.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\ma_maison_en_fleur.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_harry_potter_tome_5.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\harry_potter_tome_5.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\drawable_charlie.jpg.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\drawable\\charlie.jpg"
+    },
+    {
+        "merged": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-debug-52:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\lolob\\.gradle\\daemon\\8.7\\ufr.mim.devmobile.app-main-54:\\xml\\backup_rules.xml"
     }
 ]

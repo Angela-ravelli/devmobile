@@ -1,15 +1,29 @@
 package ufr.mim.devmobile.screens
 
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.outlined.Home
+import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.Button
+import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -17,20 +31,27 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import ufr.mim.devmobile.R
 //import kotlinx.serialization.json.Json
 //import ufr.mim.devmobile.components.MovieCard
 import ufr.mim.devmobile.components.BookSearchBar
+import ufr.mim.devmobile.components.BottomBar
+import ufr.mim.devmobile.components.MyIcon
+import ufr.mim.devmobile.components.MyTopBar
 //import ufr.mim.devmobile.components.RawButton
 import ufr.mim.devmobile.data.bookData
 import ufr.mim.devmobile.mapper.BookMapper
@@ -39,29 +60,25 @@ import ufr.mim.devmobile.mapper.BookMapper
 //import ufr.mim.devmobile.navigation.MoviesScreens
 import ufr.mim.devmobile.ui.theme.MainPadding
 
-@OptIn(ExperimentalMaterial3Api::class)
+
 @Composable
 fun HomeScreen(onDetails: (String) -> Unit) {
-    val focusManager = LocalFocusManager.current
+    var selectedTab by remember { mutableIntStateOf(0) }
+    val focusRequester = FocusRequester()
 
     Scaffold(
-        topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        text = "ChapterBox",
-                        color = MaterialTheme.colorScheme.onPrimary,
-                        style = MaterialTheme.typography.headlineMedium
-                    )
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary
-                )
+        topBar = { MyTopBar() },
+        bottomBar = {
+            BottomBar(
+                selectedTab = selectedTab,
+                onTabSelected = { selectedTab = it } // Mise à jour de l'onglet actif
             )
         },
-        modifier = Modifier.pointerInput(Unit) { detectTapGestures(onTap = {
-            focusManager.clearFocus()
-        }) }
+        modifier = Modifier.pointerInput(Unit) {
+            detectTapGestures(onTap = {
+                focusRequester.freeFocus()
+            })
+        }
     ) { innerPadding ->
         Column(
             modifier = Modifier
@@ -71,13 +88,8 @@ fun HomeScreen(onDetails: (String) -> Unit) {
                 .padding(MainPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp, alignment = Alignment.Top),
         ) {
-            Text(
-                text = "Bonjour ! ",
-                color = MaterialTheme.colorScheme.onBackground,
-                style = MaterialTheme.typography.titleLarge
-            )
-
             var searchValue by remember { mutableStateOf(TextFieldValue("")) }
+
             BookSearchBar(
                 value = searchValue,
                 onValueChange = { value ->
@@ -85,18 +97,38 @@ fun HomeScreen(onDetails: (String) -> Unit) {
                 }
             )
 
-            //val movieListDto: MovieDto = Json.decodeFromString(movieData)
-            //val movieMapper = MovieMapper()
-            //val movieList: List<Movie> = movieListDto.movies.map { movieMapper.mapMovieDtoToMovie(it) }
-            //val filteredList: List<Movie> = movieList.filter { it.title.lowercase().contains(searchValue.text.lowercase()) }
-            LazyColumn(
-                verticalArrangement = Arrangement.spacedBy(MainPadding)
-            ) {
-                /*items(filteredList) { movie ->
-                    RawButton(onClick = { onDetails(movie.id.toString()) }) {
-                        MovieCard(movie)
+            val name = "Angéla"
+            Text(
+                text = "Bonjour $name ! ",
+                color = MaterialTheme.colorScheme.onBackground,
+                style = MaterialTheme.typography.titleLarge
+            )
+
+            // Section centrale change en fonction de l'onglet
+            Crossfade(
+                targetState = selectedTab,
+                animationSpec = tween(500),
+                label = "Crossfade tabs"
+            ) { tabIndex ->
+                when (tabIndex) {
+                    0 -> {
+                        // Contenu de la "Home" page
+                        LazyColumn(
+                            verticalArrangement = Arrangement.spacedBy(MainPadding)
+                        ) {
+                            // ajouter des items
+                        }
                     }
-                }*/
+                    1 -> {
+                        // Contenu de la page "Ajouter livre"
+                        Text(
+                            text = "Ajouter Livre",
+                            modifier = Modifier.fillMaxSize(),
+                            color = MaterialTheme.colorScheme.onBackground,
+                            style = MaterialTheme.typography.titleLarge
+                        )
+                    }
+                }
             }
         }
     }

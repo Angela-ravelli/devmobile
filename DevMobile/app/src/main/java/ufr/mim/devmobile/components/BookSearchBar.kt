@@ -21,7 +21,7 @@ fun BookSearchBar(value: TextFieldValue, onValueChange: (TextFieldValue) -> Unit
         value = value,
         onValueChange = onValueChange,
         modifier = Modifier.fillMaxWidth(),
-        placeholder = { Text("Rechercher un film") },
+        placeholder = { Text("Rechercher dans mes livres..") },
         colors = TextFieldDefaults.colors(
             focusedContainerColor = MaterialTheme.colorScheme.primary.copy(alpha = 0.8F),
             unfocusedContainerColor = MaterialTheme.colorScheme.primary,
@@ -42,7 +42,6 @@ fun BookSearchBar(value: TextFieldValue, onValueChange: (TextFieldValue) -> Unit
                 Icon(imageVector = Icons.Filled.Close, contentDescription = Icons.Filled.Close.toString(),
                     Modifier.clickable { onValueChange(TextFieldValue("")) })
             }
-
         }
     )
 }
