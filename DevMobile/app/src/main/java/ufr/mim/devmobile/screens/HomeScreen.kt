@@ -62,29 +62,12 @@ import ufr.mim.devmobile.ui.theme.MainPadding
 
 
 @Composable
-fun HomeScreen(onDetails: (String) -> Unit) {
-    var selectedTab by remember { mutableIntStateOf(0) }
-    val focusRequester = FocusRequester()
+fun HomeScreen() {
 
-    Scaffold(
-        topBar = { MyTopBar() },
-        bottomBar = {
-            BottomBar(
-                selectedTab = selectedTab,
-                onTabSelected = { selectedTab = it } // Mise à jour de l'onglet actif
-            )
-        },
-        modifier = Modifier.pointerInput(Unit) {
-            detectTapGestures(onTap = {
-                focusRequester.freeFocus()
-            })
-        }
-    ) { innerPadding ->
-        Column(
+    Column(
             modifier = Modifier
                 .fillMaxSize()
                 .background(MaterialTheme.colorScheme.background)
-                .padding(innerPadding)
                 .padding(MainPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp, alignment = Alignment.Top),
         ) {
@@ -104,32 +87,7 @@ fun HomeScreen(onDetails: (String) -> Unit) {
                 style = MaterialTheme.typography.titleLarge
             )
 
-            // Section centrale change en fonction de l'onglet
-            Crossfade(
-                targetState = selectedTab,
-                animationSpec = tween(500),
-                label = "Crossfade tabs"
-            ) { tabIndex ->
-                when (tabIndex) {
-                    0 -> {
-                        // Contenu de la "Home" page
-                        LazyColumn(
-                            verticalArrangement = Arrangement.spacedBy(MainPadding)
-                        ) {
-                            // ajouter des items
-                        }
-                    }
-                    1 -> {
-                        // Contenu de la page "Ajouter livre"
-                        Text(
-                            text = "Ajouter Livre",
-                            modifier = Modifier.fillMaxSize(),
-                            color = MaterialTheme.colorScheme.onBackground,
-                            style = MaterialTheme.typography.titleLarge
-                        )
-                    }
-                }
-            }
+
         }
     }
-}
+

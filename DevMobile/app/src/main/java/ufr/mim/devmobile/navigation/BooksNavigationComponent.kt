@@ -7,6 +7,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import ufr.mim.devmobile.navigation.BooksScreens
+import ufr.mim.devmobile.screens.AddScreen
 import ufr.mim.devmobile.screens.DetailsScreen
 import ufr.mim.devmobile.screens.HomeScreen
 
@@ -14,25 +15,15 @@ import ufr.mim.devmobile.screens.HomeScreen
 fun BooksNavigationComponent() {
     val navController = rememberNavController()
 
-    NavHost(navController = navController, startDestination = BooksScreens.HomeScreen.name) {
-        composable(BooksScreens.HomeScreen.name) {
-            HomeScreen(onDetails = { id ->
-                navController.navigate(BooksScreens.DetailsScreen.name + "/$id")
+    NavHost(navController = navController, startDestination = BooksScreens.AddScreen.name) {
+        composable(BooksScreens.AddScreen.name) {
+            AddScreen(onDetails = { id ->
+                navController.navigate(BooksScreens.DetailsScreen.name)
             })
         }
 
-        composable(
-            route = BooksScreens.DetailsScreen.name + "/{id}",
-            arguments = listOf(navArgument(name = "id") { type = NavType.StringType })
-        ) { backStackEntry ->
-            DetailsScreen(
-                /*backAction = {
-                    if (navController.previousBackStackEntry != null) {
-                        navController.popBackStack()
-                    }
-                },
-                id = backStackEntry.arguments?.getString("id")*/
-            )
+        composable(BooksScreens.DetailsScreen.name) {
+            DetailsScreen()
         }
     }
 }
