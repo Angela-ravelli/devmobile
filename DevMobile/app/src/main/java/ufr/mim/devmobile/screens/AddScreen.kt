@@ -10,6 +10,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -24,6 +26,7 @@ import androidx.compose.ui.focus.FocusRequester
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.navigation.compose.NavHost
 import ufr.mim.devmobile.components.BookSearchBar
 import ufr.mim.devmobile.components.BottomBar
 import ufr.mim.devmobile.components.MyIcon
@@ -43,14 +46,25 @@ fun AddScreen(onDetails: (String) -> Unit) {
                 .padding(MainPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp, alignment = Alignment.Top),
         ) {
-            var searchValue by remember { mutableStateOf(TextFieldValue("")) }
+        Row() {
 
-            BookSearchBar(
-                value = searchValue,
-                onValueChange = { value ->
-                    searchValue = value
-                }
-            )
+           var searchValue by remember { mutableStateOf(TextFieldValue("")) }
+
+           BookSearchBar(
+               value = searchValue,
+               onValueChange = { value ->
+                   searchValue = value
+               }
+           )
+            Button(onClick = { searchValue },
+                colors = ButtonColors(MaterialTheme.colorScheme.secondary,
+                    MaterialTheme.colorScheme.onPrimary,
+                    MaterialTheme.colorScheme.secondary.copy(alpha = 0.2F),
+                    MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.5F))
+            ){
+
+            }
         }
-    }
+   }
+}
 
