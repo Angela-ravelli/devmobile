@@ -2,10 +2,14 @@ package ufr.mim.devmobile.components
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.BottomAppBar
@@ -47,13 +51,14 @@ fun BottomBar() {
     val addOutlined = ImageVector.vectorResource(id = R.drawable.add_outlined)
     val bookmarksFilled = ImageVector.vectorResource(id = R.drawable.bookmarks_filled)
     val bookmarksOutlined = ImageVector.vectorResource(id = R.drawable.bookmarks_outlined)
-    val laptopMetrics = ImageVector.vectorResource(id = R.drawable.laptop_metrics)
+    val analyticsFilled = ImageVector.vectorResource(id = R.drawable.analytics_filled)
+    val analyticsOutlined = ImageVector.vectorResource(id = R.drawable.analytics_outlined)
 
     val icons: List<MyIcon> = listOf(
         MyIcon(0, { selectedTab = 0 }, homeFilled, homeOutlined),
         MyIcon(1, { selectedTab = 1 }, addFilled, addOutlined),
         MyIcon(2, { selectedTab = 2 }, bookmarksFilled, bookmarksOutlined),
-        MyIcon(3, { selectedTab = 3 }, laptopMetrics, laptopMetrics)
+        MyIcon(3, { selectedTab = 3 }, analyticsFilled, analyticsOutlined)
     )
 
     Scaffold(

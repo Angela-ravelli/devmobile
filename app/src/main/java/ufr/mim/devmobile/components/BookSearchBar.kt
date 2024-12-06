@@ -24,7 +24,7 @@ fun BookSearchBar(value: TextFieldValue, onValueChange: (TextFieldValue) -> Unit
         modifier = Modifier.fillMaxWidth(),
         placeholder = { Text("Rechercher dans mes livres..") },
         colors = TextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.8F),
+            focusedContainerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.5F),
             unfocusedContainerColor = MaterialTheme.colorScheme.secondary,
             focusedPlaceholderColor = SearchPlaceholder,
             unfocusedPlaceholderColor = SearchPlaceholder,

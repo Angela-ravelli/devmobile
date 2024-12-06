@@ -2,6 +2,7 @@ package ufr.mim.devmobile.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -20,6 +21,7 @@ import ufr.mim.devmobile.R
 @Composable
 fun MyTopBar() {
     TopAppBar(
+        modifier = Modifier.height(70.dp),
         title = {
             Row(
                 verticalAlignment = Alignment.CenterVertically
