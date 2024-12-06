@@ -104,7 +104,7 @@ fun HomeScreen(onDetails: (String) -> Unit) {
                 style = MaterialTheme.typography.titleLarge
             )
 
-            // Section centrale change en fonction de l'onglet
+            /*// Section centrale change en fonction de l'onglet
             Crossfade(
                 targetState = selectedTab,
                 animationSpec = tween(500),
@@ -129,7 +129,7 @@ fun HomeScreen(onDetails: (String) -> Unit) {
                         )
                     }
                 }
-            }
+            }*/
         }
     }
 }
