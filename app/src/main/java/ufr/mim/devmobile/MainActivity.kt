@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import ufr.mim.devmobile.components.BottomBar
+import ufr.mim.devmobile.components.ContentView
 import ufr.mim.devmobile.ui.theme.BookTheme
 import ufr.mim.netfloux.navigation.BooksNavigationComponent
 
@@ -14,7 +15,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BookTheme {
-                BottomBar()
+                ContentView()
             }
         }
     }
