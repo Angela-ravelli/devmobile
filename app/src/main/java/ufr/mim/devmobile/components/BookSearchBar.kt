@@ -1,7 +1,9 @@
 package ufr.mim.devmobile.components
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Search
@@ -13,18 +15,24 @@ import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.dp
+import ufr.mim.devmobile.ui.theme.MainBackgroundProgress
+import ufr.mim.devmobile.ui.theme.MainPadding
 import ufr.mim.devmobile.ui.theme.SearchPlaceholder
 
 @Composable
-fun BookSearchBar(value: TextFieldValue, onValueChange: (TextFieldValue) -> Unit) {
+fun BookSearchBar(text: String, value: TextFieldValue, onValueChange: (TextFieldValue) -> Unit) {
+
 
     TextField(
         value = value,
         onValueChange = onValueChange,
-        modifier = Modifier.fillMaxWidth(),
-        placeholder = { Text("Rechercher dans mes livres..") },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(MainPadding, 0.dp),
+        placeholder = { Text(text) },
         colors = TextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.5F),
+            focusedContainerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.8F),
             unfocusedContainerColor = MaterialTheme.colorScheme.secondary,
             focusedPlaceholderColor = SearchPlaceholder,
             unfocusedPlaceholderColor = SearchPlaceholder,
@@ -37,11 +45,17 @@ fun BookSearchBar(value: TextFieldValue, onValueChange: (TextFieldValue) -> Unit
             focusedTrailingIconColor = MaterialTheme.colorScheme.onPrimary,
             unfocusedTrailingIconColor = MaterialTheme.colorScheme.onPrimary,
         ),
-        leadingIcon = { Icon(imageVector = Icons.Filled.Search, contentDescription = Icons.Filled.Search.toString()) },
         trailingIcon = {
-            if (value.text.isNotEmpty()) {
-                Icon(imageVector = Icons.Filled.Close, contentDescription = Icons.Filled.Close.toString(),
-                    Modifier.clickable { onValueChange(TextFieldValue("")) })
+            Row {
+                if (value.text.isNotEmpty()) {
+                    Icon(imageVector = Icons.Filled.Close,
+                        contentDescription = Icons.Filled.Close.toString(),
+                        Modifier.clickable { onValueChange(TextFieldValue("")) })
+                }
+                Icon(
+                    imageVector = Icons.Filled.Search,
+                    contentDescription = Icons.Filled.Search.toString()
+                )
             }
         }
     )

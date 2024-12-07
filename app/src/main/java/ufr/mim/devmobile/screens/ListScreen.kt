@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import ufr.mim.devmobile.components.BookSearchBar
+import ufr.mim.devmobile.components.ListesMinimize
 import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable
@@ -25,20 +26,21 @@ fun ListScreen() {
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
-            .padding(MainPadding),
-        verticalArrangement = Arrangement.spacedBy(16.dp, alignment = Alignment.Top),
+            .padding(0.dp, MainPadding),
+        verticalArrangement = Arrangement.spacedBy(MainPadding, alignment = Alignment.Top),
     ) {
         var searchValue by remember { mutableStateOf(TextFieldValue("")) }
 
         BookSearchBar(
+            text = "Rechercher un livre..",
             value = searchValue,
             onValueChange = { value ->
                 searchValue = value
             }
         )
 
-        Text(
-            text = "Liste favoris ! "
-        )
+        ListesMinimize("Livres Favoris")
+        ListesMinimize("Livres à acheter")
+        ListesMinimize(" Livres déjà lus")
     }
 }
