@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -47,56 +48,58 @@ import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable
 fun AddScreen(onDetails: (String) -> Unit) {
-    var selectedTab by remember { mutableIntStateOf(0) }
-    val focusRequester = FocusRequester()
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background),
+        verticalArrangement = Arrangement.spacedBy(MainPadding, alignment = Alignment.Top)
+    ) {
+        // Barre de recherche et bouton "ajouter livre"
+        item {
+            Row(
+                modifier = Modifier.padding(0.dp, MainPadding),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                var searchValue by remember { mutableStateOf(TextFieldValue("")) }
 
-   Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background)
-                .padding(0.dp, MainPadding),
-            verticalArrangement = Arrangement.spacedBy(MainPadding, alignment = Alignment.Top),
-        ) {
-        Row (
-            modifier = Modifier.padding(0.dp, MainPadding),
-            verticalAlignment = Alignment.CenterVertically
-        ){
+                Box(modifier = Modifier.weight(1f)) {
+                    BookSearchBar(
+                        text = "Rechercher un livre..",
+                        value = searchValue,
+                        onValueChange = { value ->
+                            searchValue = value
+                        }
+                    )
+                }
 
-           var searchValue by remember { mutableStateOf(TextFieldValue("")) }
-
-            Box(modifier = Modifier.weight(1f)) {
-                BookSearchBar(
-                    text = "Rechercher un livre..",
-                    value = searchValue,
-                    onValueChange = { value ->
-                        searchValue = value
-                    }
-                )
-            }
-
-            Button(onClick = { searchValue },
-                colors = ButtonColors(
-                    MaterialTheme.colorScheme.secondary,
-                    MaterialTheme.colorScheme.onPrimary,
-                    MaterialTheme.colorScheme.secondary.copy(alpha = 0.2F),
-                    MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.5F)),
-                modifier = Modifier
-                    .padding(end = MainPadding)
-                    .dropShadow(RoundedCornerShape(4.dp))
-                ,
-                shape = RoundedCornerShape(4.dp),
-            ){
-                Text(
-                    text = "Ajouter un livre\n manuellement",
-                    textAlign = TextAlign.Center,
-                    maxLines = 2
-                )
+                Button(
+                    onClick = { /* Action à définir */ },
+                    colors = ButtonColors(
+                        MaterialTheme.colorScheme.secondary,
+                        MaterialTheme.colorScheme.onPrimary,
+                        MaterialTheme.colorScheme.secondary.copy(alpha = 0.6F),
+                        MaterialTheme.colorScheme.onPrimary.copy(alpha = 0.8F)
+                    ),
+                    modifier = Modifier
+                        .padding(end = MainPadding)
+                        .dropShadow(RoundedCornerShape(4.dp)),
+                    shape = RoundedCornerShape(4.dp),
+                ) {
+                    Text(
+                        text = "Ajouter un livre\n manuellement",
+                        textAlign = TextAlign.Center,
+                        maxLines = 2
+                    )
+                }
             }
         }
 
-        ListesMinimize("Suggestions")
-        ListesMinimize("Romance")
-        ListesMinimize("Science-fiction")
-   }
+        // Listes par genres
+        item { ListesMinimize("Suggestions") }
+        item { ListesMinimize("Romance") }
+        item { ListesMinimize("Science-fiction") }
+        item { ListesMinimize("Policier") }
+    }
 }
+
 

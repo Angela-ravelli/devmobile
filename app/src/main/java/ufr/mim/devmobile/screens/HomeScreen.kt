@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -36,13 +37,15 @@ import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable
 fun HomeScreen() {
-    Column(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(MaterialTheme.colorScheme.background)
-                .padding(0.dp, MainPadding),
-            verticalArrangement = Arrangement.spacedBy(MainPadding, alignment = Alignment.Top),
-        ) {
+    LazyColumn(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+            .padding(0.dp, MainPadding),
+        verticalArrangement = Arrangement.spacedBy(MainPadding, alignment = Alignment.Top)
+    ) {
+        // Barre de recherche
+        item {
             var searchValue by remember { mutableStateOf(TextFieldValue("")) }
 
             BookSearchBar(
@@ -52,7 +55,10 @@ fun HomeScreen() {
                     searchValue = value
                 }
             )
+        }
 
+        // Message de bienvenue
+        item {
             val name = "Angéla"
             Text(
                 modifier = Modifier.padding(MainPadding, 0.dp),
@@ -60,13 +66,16 @@ fun HomeScreen() {
                 color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.titleLarge
             )
-
-            StatsHomeCard()
-            ListesMinimize("Ma bibliothèque")
-            ListesMinimize("Livres en cours")
-            ListesMinimize("Livres en attente")
         }
+
+        // Cartes de statistiques et listes
+        item { StatsHomeCard() }
+        item { ListesMinimize("Ma bibliothèque") }
+        item { ListesMinimize("Livres en cours") }
+        item { ListesMinimize("Livres en attente") }
     }
+}
+
 
 
 
