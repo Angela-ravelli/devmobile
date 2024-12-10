@@ -1,13 +1,5 @@
 package ufr.mim.devmobile.data
 
-import android.content.Context
-import androidx.datastore.preferences.core.Preferences
-import androidx.datastore.preferences.core.edit
-import androidx.datastore.preferences.core.intPreferencesKey
-import androidx.datastore.preferences.preferencesDataStore
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
-
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -25,8 +17,8 @@ class ProgressViewModel(private val dataStoreManager: DataStoreManager) : ViewMo
 
     private fun loadProgress() {
         viewModelScope.launch {
-            dataStoreManager.progressPages.collect { pages ->
-                _progressPages.value = pages
+            dataStoreManager.readingProgress.collect { progress ->
+                _progressPages.value = progress
             }
         }
     }
