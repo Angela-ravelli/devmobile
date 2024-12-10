@@ -32,7 +32,7 @@ fun BookSearchBar(text: String, value: TextFieldValue, onValueChange: (TextField
             .padding(MainPadding, 0.dp),
         placeholder = { Text(text) },
         colors = TextFieldDefaults.colors(
-            focusedContainerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.8F),
+            focusedContainerColor = MaterialTheme.colorScheme.secondary.copy(alpha = 0.6F),
             unfocusedContainerColor = MaterialTheme.colorScheme.secondary,
             focusedPlaceholderColor = SearchPlaceholder,
             unfocusedPlaceholderColor = SearchPlaceholder,

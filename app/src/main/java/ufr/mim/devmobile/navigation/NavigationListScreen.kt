@@ -4,11 +4,12 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import ufr.mim.devmobile.data.ProgressViewModel
 import ufr.mim.devmobile.screens.AddScreen
 import ufr.mim.devmobile.screens.DetailsScreen
 
 @Composable
-fun NavigationListScreen() {
+fun NavigationListScreen(viewModel: ProgressViewModel) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = ListScreens.ListScreen.name) {
@@ -19,7 +20,7 @@ fun NavigationListScreen() {
         }
 
         composable(ListScreens.DetailsScreen.name) {
-            DetailsScreen()
+            DetailsScreen(viewModel)
         }
     }
 }

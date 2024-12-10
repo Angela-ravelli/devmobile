@@ -51,13 +51,14 @@ fun AddScreen(onDetails: (String) -> Unit) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.background),
+            .background(MaterialTheme.colorScheme.background)
+            .padding(0.dp, MainPadding),
         verticalArrangement = Arrangement.spacedBy(MainPadding, alignment = Alignment.Top)
     ) {
         // Barre de recherche et bouton "ajouter livre"
         item {
             Row(
-                modifier = Modifier.padding(0.dp, MainPadding),
+                modifier = Modifier.padding(bottom = MainPadding),
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 var searchValue by remember { mutableStateOf(TextFieldValue("")) }

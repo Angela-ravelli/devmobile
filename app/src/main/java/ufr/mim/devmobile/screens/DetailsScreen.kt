@@ -1,9 +1,126 @@
 package ufr.mim.devmobile.screens
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.outlined.FavoriteBorder
+import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.input.TextFieldValue
+import androidx.compose.ui.unit.dp
+import ufr.mim.devmobile.R
+import ufr.mim.devmobile.components.ProgressInput
+import ufr.mim.devmobile.data.ProgressViewModel
+import ufr.mim.devmobile.mapper.FavoriteManager
+import ufr.mim.devmobile.ui.theme.MainPadding
+import ufr.mim.devmobile.ui.theme.SearchPlaceholder
 
 @Composable
-fun DetailsScreen() {
-    Text("text")
+fun DetailsScreen(viewModel: ProgressViewModel) {
+    var isFav by remember { mutableStateOf(false) }
+    //val favorites = FavoriteManager.favorites.filter { it.value }.keys
+
+    LazyColumn(
+        modifier = Modifier.padding(MainPadding),
+        verticalArrangement = Arrangement.spacedBy(MainPadding)
+    ) {
+        item {
+            Row {
+                Text(
+                    text = "Titre du livre",
+                    style = MaterialTheme.typography.headlineLarge,
+                    modifier = Modifier.weight(1f)
+                )
+                IconButton(
+                    onClick = {
+                        isFav = !isFav
+                        FavoriteManager.toggleFavorite("id")
+                    }
+                ){
+                    Icon(
+                        imageVector = if(isFav) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
+                        contentDescription = if (isFav) "Supprimer des favoris" else "Ajouter aux favoris",
+                        modifier = Modifier.size(48.dp)
+                    )
+                }
+            }
+        }
+        item {
+            Text(
+                text = "Auteur"
+            )
+        }
+        item {
+            Image(
+                painter = painterResource(id = R.drawable.charlie),
+                contentDescription = "Couverture",
+                modifier = Modifier
+                    .size(500.dp)
+            )
+        }
+        item {
+            Text(
+                text = "Résumé : "
+            )
+        }
+        item {
+            Text(
+                text = "Genre : "
+            )
+        }
+        item {
+            Text(
+                text = "Date de sortie : "
+            )
+        }
+        item {
+            Text(
+                text = "Editeur : "
+            )
+        }
+        item {
+            Text(
+                text = "Nombre de pages : "
+            )
+        }
+        item {
+            Row {
+                Text(
+                    text = "Etiquettes : "
+                )
+                Card {  }
+            }
+        }
+        item {
+            val progressPages by viewModel.progressPages.collectAsState()
+
+            ProgressInput(
+                progressPages = progressPages.toString(),
+                onValueChange = { pages ->
+                    val pagesInt = pages.toIntOrNull() ?: 0
+                    viewModel.saveProgress(pagesInt)
+                }
+            )
+        }
+    }
 }

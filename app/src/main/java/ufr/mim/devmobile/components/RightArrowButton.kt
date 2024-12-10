@@ -1,10 +1,12 @@
 package ufr.mim.devmobile.components
 
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.automirrored.filled.ArrowForward
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.ButtonDefaults
@@ -29,12 +31,12 @@ fun RightArrowButton(onClick: () -> Unit) {
         ),
         modifier = Modifier
             .size(60.dp)
-            .dropShadow(CircleShape)
+            .dropShadow(CircleShape),
+        contentPadding = PaddingValues(0.dp) // Supprime les marges internes
     ) {
         Icon(
-            imageVector = Icons.Default.ArrowForward, // Flèche vers la droite
-            contentDescription = "Flèche droite",
-            modifier = Modifier.size(24.dp)
+            imageVector = Icons.AutoMirrored.Filled.ArrowForward,
+            contentDescription = "Flèche vers la droite",
         )
     }
 }

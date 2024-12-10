@@ -2,12 +2,7 @@ package ufr.mim.devmobile.components
 
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material3.BottomAppBar
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -17,14 +12,22 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
-import androidx.compose.ui.unit.dp
+import androidx.lifecycle.ViewModel
 import ufr.mim.devmobile.R
+import ufr.mim.devmobile.data.DataStoreManager
+import ufr.mim.devmobile.data.FavoriteViewModel
+import ufr.mim.devmobile.data.ProgressViewModel
+import ufr.mim.devmobile.screens.DetailsScreen
 import ufr.mim.devmobile.screens.HomeScreen
 import ufr.mim.devmobile.screens.ListScreen
 import ufr.mim.netfloux.navigation.BooksNavigationComponent
 
 @Composable
-fun ContentView() {
+fun ContentView(MainBar: Boolean,
+                progressViewModel: ProgressViewModel,
+                favoriteViewModel: FavoriteViewModel
+                ) {
+
     var selectedTab by remember { mutableIntStateOf(0) }
 
     val homeFilled = ImageVector.vectorResource(id = R.drawable.home_filled)
@@ -44,7 +47,7 @@ fun ContentView() {
     )
 
     Scaffold(
-        topBar = { MyTopBar() },
+        topBar = { MyTopBar(MainBar) },
         bottomBar = { BottomBar(selectedTab, icons) }
     ) { paddingValues ->
         // Section centrale change en fonction de l'onglet
@@ -56,10 +59,11 @@ fun ContentView() {
         ) { tabIndex ->
             when (tabIndex) {
                 0 -> {
-                    HomeScreen()
+                    //HomeScreen()
+                    DetailsScreen(progressViewModel)
                 }
                 1 -> {
-                    BooksNavigationComponent()
+                    BooksNavigationComponent(progressViewModel)
                 }
                 2 -> {
                     ListScreen()
