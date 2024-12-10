@@ -20,6 +20,8 @@ private val LightColorScheme = lightColorScheme(
     onPrimary = MainText,
     background = MainBackground,
     onBackground = MainText,
+    surface = MainBackgroundProgress,
+    onSurface = MainButtonOrProgress
 )
 
 @Composable

@@ -3,6 +3,7 @@ package ufr.mim.devmobile.screens
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -30,36 +31,49 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import ufr.mim.devmobile.R
 import ufr.mim.devmobile.components.ProgressInput
+import ufr.mim.devmobile.data.FavoriteViewModel
 import ufr.mim.devmobile.data.ProgressViewModel
-import ufr.mim.devmobile.mapper.FavoriteManager
 import ufr.mim.devmobile.ui.theme.MainPadding
 import ufr.mim.devmobile.ui.theme.SearchPlaceholder
 
 @Composable
-fun DetailsScreen(viewModel: ProgressViewModel) {
-    var isFav by remember { mutableStateOf(false) }
-    //val favorites = FavoriteManager.favorites.filter { it.value }.keys
+fun DetailsScreen(
+    progressViewModel: ProgressViewModel,
+    favoriteViewModel: FavoriteViewModel,
+) {
+    val isFav by favoriteViewModel.favoriteBooks.collectAsState()
 
     LazyColumn(
         modifier = Modifier.padding(MainPadding),
         verticalArrangement = Arrangement.spacedBy(MainPadding)
     ) {
         item {
-            Row {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier.fillMaxWidth()
+            ) {
                 Text(
                     text = "Titre du livre",
                     style = MaterialTheme.typography.headlineLarge,
                     modifier = Modifier.weight(1f)
                 )
+
                 IconButton(
                     onClick = {
-                        isFav = !isFav
-                        FavoriteManager.toggleFavorite("id")
+                        favoriteViewModel.toggleFavorite("id")
                     }
-                ){
+                ) {
                     Icon(
-                        imageVector = if(isFav) Icons.Filled.Favorite else Icons.Outlined.FavoriteBorder,
-                        contentDescription = if (isFav) "Supprimer des favoris" else "Ajouter aux favoris",
+                        imageVector =
+                        if (isFav.contains("id"))
+                            Icons.Filled.Favorite
+                        else
+                            Icons.Outlined.FavoriteBorder,
+                        contentDescription =
+                        if (isFav.contains("id"))
+                            "Supprimer des favoris"
+                        else
+                            "Ajouter aux favoris",
                         modifier = Modifier.size(48.dp)
                     )
                 }
@@ -112,13 +126,13 @@ fun DetailsScreen(viewModel: ProgressViewModel) {
             }
         }
         item {
-            val progressPages by viewModel.progressPages.collectAsState()
+            val progressPages by progressViewModel.progressPages.collectAsState()
 
             ProgressInput(
                 progressPages = progressPages.toString(),
                 onValueChange = { pages ->
                     val pagesInt = pages.toIntOrNull() ?: 0
-                    viewModel.saveProgress(pagesInt)
+                    progressViewModel.saveProgress(pagesInt)
                 }
             )
         }

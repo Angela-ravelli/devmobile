@@ -4,12 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import ufr.mim.devmobile.data.FavoriteViewModel
 import ufr.mim.devmobile.data.ProgressViewModel
 import ufr.mim.devmobile.screens.AddScreen
 import ufr.mim.devmobile.screens.DetailsScreen
 
 @Composable
-fun NavigationHomeScreen(viewModel: ProgressViewModel) {
+fun NavigationHomeScreen(progressViewModel: ProgressViewModel, favoriteViewModel: FavoriteViewModel) {
     val navController = rememberNavController()
 
     NavHost(navController = navController, startDestination = HomeScreens.HomeScreen.name) {
@@ -20,7 +21,7 @@ fun NavigationHomeScreen(viewModel: ProgressViewModel) {
         }
 
         composable(HomeScreens.DetailsScreen.name) {
-            DetailsScreen(viewModel)
+            DetailsScreen(progressViewModel, favoriteViewModel)
         }
     }
 }

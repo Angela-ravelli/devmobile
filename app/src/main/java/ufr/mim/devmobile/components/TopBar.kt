@@ -49,6 +49,7 @@ fun MyTopBar(MainBar: Boolean) {
                         onClick = { /*Fermer la page nav*/}
                     ){
                         Icon(
+                            tint = MaterialTheme.colorScheme.onPrimary,
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
                             contentDescription = "Flèche vers la gauche",
                         )

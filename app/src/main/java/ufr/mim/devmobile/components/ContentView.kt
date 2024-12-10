@@ -60,10 +60,10 @@ fun ContentView(MainBar: Boolean,
             when (tabIndex) {
                 0 -> {
                     //HomeScreen()
-                    DetailsScreen(progressViewModel)
+                    DetailsScreen(progressViewModel, favoriteViewModel)
                 }
                 1 -> {
-                    BooksNavigationComponent(progressViewModel)
+                    BooksNavigationComponent(progressViewModel, favoriteViewModel)
                 }
                 2 -> {
                     ListScreen()
