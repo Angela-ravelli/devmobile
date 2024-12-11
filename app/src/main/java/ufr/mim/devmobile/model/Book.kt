@@ -5,11 +5,11 @@ data class Books(
     val title: String,
     val year : Int,
     val genre: List<String>,
-    val author: List<String>,
+    val author: String,
     val plot: String,
     val progression: Int,
     val pages: Int,
     val etiquette: List<String>,
-    val editor: String, 
+    val editor: String,
     val image: String
 )

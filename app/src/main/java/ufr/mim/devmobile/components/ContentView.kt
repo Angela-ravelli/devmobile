@@ -14,6 +14,7 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.lifecycle.ViewModel
 import ufr.mim.devmobile.R
+import ufr.mim.devmobile.data.BooksViewModel
 import ufr.mim.devmobile.data.DataStoreManager
 import ufr.mim.devmobile.data.FavoriteViewModel
 import ufr.mim.devmobile.data.ProgressViewModel
@@ -27,6 +28,7 @@ import ufr.mim.netfloux.navigation.BooksNavigationComponent
 fun ContentView(MainBar: Boolean,
                 progressViewModel: ProgressViewModel,
                 favoriteViewModel: FavoriteViewModel
+                //booksViewModel: BooksViewModel
                 ) {
 
     var selectedTab by remember { mutableIntStateOf(0) }

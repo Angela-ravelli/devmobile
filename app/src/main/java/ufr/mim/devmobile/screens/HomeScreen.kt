@@ -18,6 +18,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,11 +33,12 @@ import ufr.mim.devmobile.R
 import ufr.mim.devmobile.components.BookSearchBar
 import ufr.mim.devmobile.components.ListesMinimize
 import ufr.mim.devmobile.components.StatsHomeCard
+import ufr.mim.devmobile.data.BooksViewModel
 import ufr.mim.devmobile.ui.theme.MainPadding
 
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen() { //booksViewModel: BooksViewModel) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -70,7 +72,7 @@ fun HomeScreen() {
 
         // Cartes de statistiques et listes
         item { StatsHomeCard() }
-        item { ListesMinimize("Ma bibliothèque") }
+        item { ListesMinimize("Ma bibliothèque") } //}, booksViewModel) }
         item { ListesMinimize("Livres en cours") }
         item { ListesMinimize("Livres en attente") }
     }
