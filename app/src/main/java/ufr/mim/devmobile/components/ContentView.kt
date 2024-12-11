@@ -17,6 +17,7 @@ import ufr.mim.devmobile.R
 import ufr.mim.devmobile.data.DataStoreManager
 import ufr.mim.devmobile.data.FavoriteViewModel
 import ufr.mim.devmobile.data.ProgressViewModel
+import ufr.mim.devmobile.screens.AddDetailsScreen
 import ufr.mim.devmobile.screens.DetailsScreen
 import ufr.mim.devmobile.screens.HomeScreen
 import ufr.mim.devmobile.screens.ListScreen
@@ -60,7 +61,7 @@ fun ContentView(MainBar: Boolean,
             when (tabIndex) {
                 0 -> {
                     //HomeScreen()
-                    DetailsScreen(progressViewModel, favoriteViewModel)
+                    AddDetailsScreen(progressViewModel, favoriteViewModel, { }, { })
                 }
                 1 -> {
                     BooksNavigationComponent(progressViewModel, favoriteViewModel)
