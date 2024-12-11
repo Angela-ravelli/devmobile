@@ -6,262 +6,262 @@ val bookData: String = """{
           "id": 1,
           "title": "Qui es-tu Alaska",
           "year": 2014,
-          "genre": ["romance", "jeunesse"],
+          "genre": "romance, jeunesse",
           "author": "John Green",
           "plot": "Miles Halter a seize ans mais n'a pas l'impression d'avoir vécu. Assoiffé d'expériences, il quitte le cocon familial pour le campus universitaire : ce sera le lieu de tous les possibles, de toutes les premières fois. Et de sa rencontre avec Alaska. La troublante, l'insaisissable Alaska Young, insoumise et fascinante. Amitiés fortes, amour, transgression, quête de sens : un roman qui fait rire, et fondre en larmes l'instant d'après...",
           "progression": 0,
           "pages": 368,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Gallimard Jeunesse",
-          "image":       
+          "image": "qui_es_tu_alaska"     
          },
          {
           "id": 2,
           "title": "La face cachée de Margo",
           "year": 2011,
-          "genre": ["romance", "jeunesse"],
+          "genre": "romance, jeunesse",
           "author": "John Green",
           "plot": "Margo Roth Speigelman, le nom aux six syllabes qui fait fantasmer Quentin depuis toujours. Alors forcément, quand elle s'introduit dans sa chambre, une nuit, par la fenêtre ouverte, pour l'entraîner dans une expédition vengeresse, il la suit. Mais au lendemain de leur folle nuit blanche, Margo n'apparaît pas au lycée, elle a disparu. Quentin saura-t-il décrypter les indices qu'elle lui a laissés pour la retrouver ? Plus il s'en rapproche, plus Margo semble lui échapper...",
           "progression": 0,
           "pages": 400,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Gallimard jeunesse",
-          "image":       
+          "image":  "la_face_cachee_de_margo"    
          },
          {
           "id": 3,
           "title": "Le théorème des Katherine",
           "year": 2020,
-          "genre": ["romance", "jeunesse"],
+          "genre": "romance, jeunesse",
           "author": "John Green",
           "plot": "Dix-neuf fois Colin est tombé amoureux. Dix-neuf fois la fille s'appelait Katherine. Pas Katie, ni Kat, ni Kittie, ni Cathy et surtout pas Catherine, mais KATHERINE. Et dix-neuf fois, il s'est fait larguer.",
           "progression": 0,
           "pages": 215,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Lizzie",
-          "image":       
+          "image": "le_theoreme_des_katherines"      
          },
          {
           "id": 4,
           "title": "Harry Potter, tome 1 : Harry Potter à l'école des sorciers",
           "year": 2003,
-          "genre": ["fantastique", "fantasy", "jeunesse"],
+          "genre": "fantastique, fantasy, jeunesse",
           "author": "J.K. Rowling",
           "plot": "Le jour de ses onze ans, Harry Potter, un orphelin élevé par un oncle et une tante qui le détestent, voit son existence bouleversée. Un géant vient le chercher pour l'emmener à Poudlard, une école de sorcellerie où une place l'attend depuis toujours. Voler sur des balais, jeter des sorts, combattre les trolls : Harry Potter se révèle un sorcier vraiment doué. Mais quel mystère entoure sa naissance et qui est l'effroyable V..., le mage dont personne n'ose prononcer le nom ?",
           "progression": 0,
           "pages": 308,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Gallimard Jeunesse",
-          "image":       
+          "image": "harry_potter_tome_1"     
          },
          {
           "id": 5,
           "title": "Harry Potter, tome 2 : Harry Potter et la chambre des secrets",
           "year": 2003,
-          "genre": ["fantastique", "fantasy", "jeunesse"],
+          "genre": "fantastique, fantasy, jeunesse",
           "author": "J.K. Rowling",
           "plot": "Une rentrée fracassante en voiture volante, une étrange malédiction qui s'abat sur les élèves, cette deuxième année à l'école des sorciers ne s'annonce pas de tout repos ! Entre les cours de potion magique, les matches de Quidditch et les combats de mauvais sorts, Harry Potter trouvera-t-il le temps de percer le mystère de la Chambre des Secrets ? Un livre magique pour sorciers confirmés.",
           "progression": 0,
           "pages": 364,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Gallimard Jeunesse",
-          "image":       
-         }
+          "image": "harry_potter_tome_2"      
+         },
          {
           "id": 6,
           "title": "Harry Potter, tome 3 : Harry Potter et le prisonnier d'Azkaban",
           "year": 2007,
-          "genre": ["fantastique", "fantasy", "jeunesse"],
+          "genre": "fantastique, fantasy, jeunesse",
           "author": "J.K. Rowling",
           "plot": "Sirius Black, le dangereux criminel qui s'est échappé de la forteresse d'Azkaban, recherche Harry Potter. C'est donc sous bonne garde que l'apprenti sorcier fait sa troisième rentrée. Au programme : des cours de divination, la fabrication d'une potion de ratatinage, le dressage des hippogriffes... Mais Harry est-il vraiment à l'abri du danger qui le menace ?",
           "progression": 0,
           "pages": 443,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Gallimard Jeunesse",
-          "image":       
+          "image": "harry_potter_tome_3"       
          },
          {
           "id": 7,
           "title": "Harry Potter, tome 4 : Harry Potter et la coupe de feu",
           "year": 2009,
-          "genre": ["fantastique", "fantasy", "jeunesse"],
+          "genre": "fantastique, fantasy, jeunesse",
           "author": "J.K. Rowling",
           "plot": "Après un horrible été chez les Dursley, Harry Potter entre en quatrième année au collège de Poudlard. À quatorze ans, il voudrait simplement être un jeune sorcier comme les autres, retrouver ses amis Ron et Hermione, assister avec eux à la Coupe du Monde de Quidditch, apprendre de nouveaux sortilèges et essayer des potions inconnues. Une grande nouvelle l'attend à son arrivée : la tenue à Poudlard d'un tournoi de magie entre les plus célèbres écoles de sorcellerie. Déjà les spectaculaires délégations étrangères font leur entrée... Harry se réjouit. Trop vite. Il va se trouver plongé au cœur des événements les plus dramatiques qu'il ait jamais eu à affronter.",
           "progression": 0,
           "pages": 768,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Gallimard Jeunesse",
-          "image":       
+          "image": "harry_potter_tome_4"       
          },
          {
           "id": 8,
           "title": "Harry Potter, tome 5 : Harry Potter et l'ordre du Phénix",
           "year": 2011,
-          "genre": ["fantastique", "fantasy", "jeunesse"],
+          "genre": "fantastique, fantasy, jeunesse",
           "author": "J.K. Rowling",
           "plot": "A quinze ans, Harry entre en cinquième année à Poudlard, mais il n'a jamais été si anxieux. L'adolescence, la perspective des examens et ces étranges cauchemars... Car Celui-Dont-On-Ne-Doit-Pas-Prononcer-Le-Nom est de retour. Le ministère de la Magie semble ne pas prendre cette menace au sérieux, contrairement à Dumbledore. La résistance s'organise alors autour de Harry qui va devoir compter sur le courage et la fidélité de ses amis de toujours...",
           "progression": 0,
           "pages": 1036,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Gallimard Jeunesse",
-          "image":       
+          "image": "harry_potter_tome_5"       
          },
          {
           "id": 9,
           "title": "Harry Potter, tome 6 : Harry Potter et le prince de sang mélé",
           "year": 2006,
-          "genre": ["fantastique", "fantasy", "jeunesse"],
+          "genre": "fantastique, fantasy, jeunesse",
           "author": "J.K. Rowling",
           "plot": "Dans un monde de plus en plus inquiétant, Harry se prépare à retrouver Ron et Hermione. Bientôt, ce sera la rentrée à Poudlard, avec les autres étudiants de sixième année. Mais pourquoi Dumbledore vient-il en personne chercher Harry chez les Dursley? Dans quels extraordinaires voyages au cœur de la mémoire va-t-il l'entraîner?",
           "progression": 0,
           "pages": 751,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Gallimard Jeunesse",
-          "image":       
+          "image": "harry_potter_tome_6"       
          },
          {
           "id": 10,
           "title": "Harry Potter, tome 7 : Harry Potter et les reliques de la mort",
           "year": 2008,
-          "genre": ["fantastique", "fantasy", "jeunesse"],
+          "genre": "fantastique, fantasy, jeunesse",
           "author": "J.K. Rowling",
           "plot": "Cette année, Harry a dix-sept ans et ne retourne pas à Poudlard. Avec Ron et Hermione, il se consacre à la dernière mission confiée par Dumbledore. Mais le Seigneur des Ténèbres règne en maître. Traqués, les trois fidèles amis sont contraints à la clandestinité. D'épreuves en révélations, le courage, les choix et les sacrifices de Harry seront déterminants dans la lutte contre les forces du Mal.",
           "progression": 0,
           "pages": 891,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Gallimard Jeunesse",
-          "image":       
+          "image": "harry_potter_tome_7"      
          },
          {
           "id": 11,
           "title": "Le cri",
           "year": 2024,
-          "genre": ["thriller"],
+          "genre": "thriller",
           "author": "Nicolas Beuglet",
           "plot": "À quelques kilomètres d'Oslo, l'hôpital psychiatrique de Gaustad dresse sa masse sombre parmi les pins enneigés. Appelée sur place pour un suicide, l'inspectrice Sarah Geringën pressent d'emblée que rien ne concorde. Le patient 488, ainsi surnommé suivant les chiffres cicatrisés qu'il porte sur le front, s'est figé dans la mort, un cri muet aux lèvres – un cri de peur primale. Soumise à un compte à rebours implacable, Sarah va découvrir une vérité vertigineuse sur l'une des questions qui hante chacun d'entre nous : la vie après la mort...",
           "progression": 0,
           "pages": 560,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Pocket",
-          "image":       
+          "image": "le_cri"      
          },
          {
           "id": 12,
           "title": "L'île du Diable",
           "year": 2020,
-          "genre": ["thriller"],
+          "genre": "thriller",
           "author": "Nicolas Beuglet",
           "plot": "Le corps recouvert d'une étrange poudre blanche… Des extrémités gangrenées… Un visage figé dans un rictus de douleur… En observant le cadavre de son père, Sarah Geringën est saisie d'épouvante. Et quand le médecin légiste lui tend la clé retrouvée au fond de son estomac, l'effroi la paralyse. Et si son père n'était pas l'homme qu'il prétendait être ? Des forêts obscures de Norvège aux plaines glaciales de Sibérie, l'ex-inspectrice des forces spéciales s'apprête à affronter un secret de famille terrifiant. Que découvrira-t-elle dans ce vieux manoir perdu dans les bois ? Osera-t-elle se rendre jusqu'à l'île du Diable ?",
           "progression": 0,
           "pages": 312,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Pocket",
-          "image":       
+          "image": "l_ile_du_diable"      
          },
          {
           "id": 13,
           "title": "Complot",
           "year": 2019,
-          "genre": ["thriller"],
+          "genre": "thriller",
           "author": "Nicolas Beuglet",
           "plot": "Un archipel isolé au nord de la Norvège, battu par les vents. Et, au bord de la falaise, le corps nu et martyrisé d'une femme. Les blessures qui déchirent sa chair semblent être autant de symboles mystérieux. Quand l'inspectrice Sarah Geringën, escortée par les forces spéciales, apprend l'identité de la victime, c'est le choc. Le cadavre est celui de la Première ministre. Qui en voulait à la chef de gouvernement ? Que cachait-elle sur cette île, dans un sanctuaire en béton enfoui au pied du phare ? Sarah, très vite, le pressent : la scène du crime signe le début d'une terrifiante série meurtrière. Dans son enquête, curieusement, quelqu'un semble toujours la devancer. Comme si cette ombre pouvait lire dans ses pensées... De la Norvège à la vieille cité de Byblos, et jusqu'au cœur même du Vatican, c'est l'odeur d'un complot implacable qui accompagne chacun de ses pas. Et dans cette lutte à mort, Sarah va devoir faire face à ses peurs les plus profondes. à ses vérités les plus enfouies...",
           "progression": 0,
           "pages": 576,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Pocket",
-          "image":       
+          "image": "complot"      
          },
          {
           "id": 14,
           "title": "Expérience Noa Torson, tome 1 : Ne t'arrête pas",
           "year": 2015,
-          "genre": ["thriller", "jeunesse"],
+          "genre": "thriller, jeunesse",
           "author": "Michelle Gagnon",
           "plot": "Hacker talentueuse et solitaire, Noa vit depuis plusieurs années en marge de la société. Un jour, elle se réveille sur une table d'opération, une cicatrice en travers de la poitrine, sans savoir où elle est et pourquoi elle a été opérée. Elle prend la fuite poursuivie très vite par des tueurs. Pour survivre, elle a besoin d'aide car elle est la clé d'un terrible secret.Hacker talentueuse et solitaire, Noa vit depuis plusieurs années en marge de la société. Un jour, elle se réveille sur une table d'opération, une cicatrice en travers de la poitrine, sans savoir où elle est et pourquoi elle a été opérée. Elle prend la fuite poursuivie très vite par des tueurs. Pour survivre, elle a besoin d'aide car elle est la clé d'un terrible secret.",
           "progression": 0,
           "pages": 400,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Nathan",
-          "image":       
+          "image": "noa_torson_tome_1"      
          },
          {
           "id": 15,
           "title": "Expérience Noa Torson, tome 2 : Ne regarde pas",
           "year": 2015,
-          "genre": ["thriller", "jeunesse"],
+          "genre": "thriller, jeunesse",
           "author": "Michelle Gagnon",
           "plot": "Noa se bat contre la corporation qui manipule le sinistre projet Perséphone. Avec l'aide d'autres adolescents, elle sillonne les Etats-Unis pour empêcher le kidnapping de nouveaux cobayes. De son côté, Peter, resté à Boston, met à profit ses aptitudes au piratage pour s'introduire dans le système informatique de l'organisation.",
           "progression": 0,
           "pages": 440,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Nathan",
-          "image":       
+          "image": "noa_torson_tome_2"       
          },
          {
           "id": 16,
           "title": "Expérience Noa Torson, tome 3 : N'oublie pas",
           "year": 2016,
-          "genre": ["thriller", "jeunesse"],
+          "genre": "thriller, jeunesse",
           "author": "Michelle Gagnon",
           "plot": "L'armée de Persefone a été décimée. Noa, Peter et les autres sont traqués, dévastés, épuisés... Où qu'ils aillent, quoi qu'ils fassent, leurs ennemis parviennent toujours à les retrouver. Mais il est hors de question pour eux d'abandonner la lutte. Ils comptent bien affronter l'homme qui a créé le monstrueux Projet Perséphone. Quitte à se jeter dans la gueule du loup.",
           "progression": 0,
           "pages": 440,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Nathan",
-          "image":       
+          "image": "noa_torson_tome_3"        
          },
          {
           "id": 17,
           "title": "Lait et miel",
           "year": 2017,
-          "genre": ["poésie"],
+          "genre": "poésie",
           "author": "Rupi Kaur",
           "plot": "voici le voyage d'une survie grâce à la poésie voici mes larmes, ma sueur et mon sang de vingt et un ans voici mon coeur dans tes mains voici la blessure l'amour la rupture la guérison",
           "progression": 0,
           "pages": 204,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Charleston",
-          "image":       
+          "image": "lait_et_miel"      
          },
          {
           "id": 18,
           "title": "Danser sous la pluie",
           "year": 2024,
-          "genre": ["poésie"],
+          "genre": "poésie",
           "author": "Pauline Bilisari",
           "plot": "je dépose tout ici je dépose mes larmes ma colère, mon pardon tout ce qui me pèse j'ignore si ce livre ouvrira les paroles j'ignore même si je souhaite qu'il le fasse mais il est là il prend du temps il me déchire et il est doux aussi il répare, il apaise je le sens déjà",
           "progression": 0,
           "pages": 208,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Robert Laffont",
-          "image":       
+          "image": "danser_sous_la_pluie"      
          },
          {
           "id": 19,
           "title": "Ma maison en fleurs",
           "year": 2023,
-          "genre": ["poésieé],
+          "genre": "poésie",
           "author": "Pauline Bilisari",
           "plot": "Un recueil de poèmes illustrés sensibles, dont la lecture délivre une force unique. La seule personne avec laquelle on vivra tout au long de notre vie, c’est nous.",
           "progression": 0,
           "pages": 240,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Robert Laffont",
-          "image":       
+          "image": "ma_maison_en_fleur"      
          },
          {
           "id": 20,
           "title": "Charlie",
           "year": 2007,
-          "genre": ["thriller", "fantastique"],
+          "genre": "thriller, fantastique",
           "author": "Stephen King",
           "plot": "Dès l'enfance, le terrible pouvoir de la petite Charlie s'est révélé: qu'un objet, un animal, un être humain provoque en elle la moindre crainte, la moindre tension... et il se trouve aussitôt livré aux flammes ! Aujourd'hui la douce et jolie Charlie a sept ans et le cauchemar demeure. Certes, elle sait à présent que son pouvoir est un mal qu'elle doit combattre sans relâche pour en être un jour libérée, délivrée. Alors, de toutes ses forces, Charlie lutte, mais la pulsion souvent l'emporte et déferle. Indomptable, criminelle. Et l'enfant cède au désespoir... Comment ses parents pourraient-ils lui avouer l'atroce vérité - cette imprudence fatale qu'ils ont commises avant sa naissance ? A quel destin Charlie est-elle vouée ?",
           "progression": 0,
           "pages": 602,
-          "etiquette": [],
+          "etiquette": "",
           "editor": "Le livre de poche",
-          "image":       
-         },
-         
-      ]
+          "image": "charlie"      
+         }
+      ]   
+      
 }""".trimIndent()
