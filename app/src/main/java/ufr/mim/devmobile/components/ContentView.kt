@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.lifecycle.ViewModel
+import androidx.navigation.compose.rememberNavController
 import ufr.mim.devmobile.R
 import ufr.mim.devmobile.data.BooksViewModel
 import ufr.mim.devmobile.data.DataStoreManager
@@ -48,8 +49,11 @@ fun ContentView(MainBar: Boolean,
         MyIcon(3, { selectedTab = 3 }, analyticsFilled, analyticsOutlined)
     )
 
+    val addScreenNavController = rememberNavController()
+
+
     Scaffold(
-        topBar = { MyTopBar(MainBar) },
+        topBar = { MyTopBar(MainBar, addScreenNavController) },
         bottomBar = { BottomBar(selectedTab, icons) }
     ) { paddingValues ->
         // Section centrale change en fonction de l'onglet
@@ -65,8 +69,9 @@ fun ContentView(MainBar: Boolean,
                     //DetailsScreen(progressViewModel, favoriteViewModel)
                 }
                 1 -> {
-                    BooksNavigationComponent(progressViewModel, favoriteViewModel)
+                    BooksNavigationComponent(progressViewModel, favoriteViewModel, addScreenNavController)
                 }
+
                 2 -> {
                     ListScreen()
                 }

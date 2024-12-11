@@ -37,7 +37,7 @@ import ufr.mim.devmobile.ui.theme.MainPadding
 import ufr.mim.devmobile.ui.theme.SearchPlaceholder
 
 @Composable
-fun DetailsScreen(
+fun DetailsScreen(id: String?,
     progressViewModel: ProgressViewModel,
     favoriteViewModel: FavoriteViewModel,
 ) {

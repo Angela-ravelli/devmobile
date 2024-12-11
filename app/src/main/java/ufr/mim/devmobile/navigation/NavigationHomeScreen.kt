@@ -21,7 +21,7 @@ fun NavigationHomeScreen(progressViewModel: ProgressViewModel, favoriteViewModel
         }
 
         composable(HomeScreens.DetailsScreen.name) {
-            DetailsScreen(progressViewModel, favoriteViewModel)
+            DetailsScreen(id.toString(), progressViewModel, favoriteViewModel)
         }
     }
 }

@@ -24,11 +24,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import ufr.mim.devmobile.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyTopBar(MainBar: Boolean) {
+fun MyTopBar(
+    MainBar: Boolean,
+    navController: NavHostController
+) {
     TopAppBar(
         modifier = Modifier.height(70.dp),
         title = {
@@ -46,7 +50,7 @@ fun MyTopBar(MainBar: Boolean) {
                 }
                 else {
                     IconButton(
-                        onClick = { /*Fermer la page nav*/}
+                        onClick = { navController.popBackStack() }
                     ){
                         Icon(
                             tint = MaterialTheme.colorScheme.onPrimary,

@@ -74,7 +74,7 @@ fun AddScreen(onDetails: (String) -> Unit) {
                 }
 
                 Button(
-                    onClick = { /* Action à définir */ },
+                    onClick = { onDetails("1") },
                     colors = ButtonColors(
                         MaterialTheme.colorScheme.secondary,
                         MaterialTheme.colorScheme.onPrimary,
