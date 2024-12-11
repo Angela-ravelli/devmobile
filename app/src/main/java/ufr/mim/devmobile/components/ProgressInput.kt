@@ -3,8 +3,6 @@ package ufr.mim.devmobile.components
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -18,7 +16,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun ProgressInput(
     progressPages: String,
-    onValueChange: (String) -> Unit
+    onValueChange: (String) -> Unit,
+    nbpages: String
 ) {
     Column {
         Row(
@@ -44,7 +43,7 @@ fun ProgressInput(
                 )
             )
 
-            Text(text = " / Nombre de pages")
+            Text(text = " / $nbpages")
         }
         val progress = progressPages.toFloatOrNull()?.coerceIn(0f, 100f)?.div(100f) ?: 0f
         /* changer 100 par nombre de pages */
