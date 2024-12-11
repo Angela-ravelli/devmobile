@@ -41,7 +41,7 @@ fun StatsHomeCard() {
                 style = MaterialTheme.typography.titleMedium.copy(
                     fontWeight = FontWeight.Bold
                 ),
-                color = MaterialTheme.colorScheme.onSurface
+                color = MaterialTheme.colorScheme.onPrimary
             )
 
             Spacer(modifier = Modifier.height(8.dp))
@@ -57,7 +57,7 @@ fun StatsHomeCard() {
                 Text(
                     text = "Vous avez lu 2h aujourd'hui",
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurface
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
             }
 
@@ -74,7 +74,7 @@ fun StatsHomeCard() {
                 Text(
                     text = "Vous avez lu 80 livres cette année",
                     style = MaterialTheme.typography.bodyMedium,
-                    color = MaterialTheme.colorScheme.onSurface
+                    color = MaterialTheme.colorScheme.onPrimary
                 )
             }
         }

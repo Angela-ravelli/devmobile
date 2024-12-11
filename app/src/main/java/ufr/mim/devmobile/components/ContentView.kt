@@ -12,21 +12,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
-import androidx.lifecycle.ViewModel
 import androidx.navigation.compose.rememberNavController
 import ufr.mim.devmobile.R
-import ufr.mim.devmobile.data.BooksViewModel
-import ufr.mim.devmobile.data.DataStoreManager
 import ufr.mim.devmobile.data.FavoriteViewModel
 import ufr.mim.devmobile.data.ProgressViewModel
-import ufr.mim.devmobile.screens.AddDetailsScreen
-import ufr.mim.devmobile.screens.DetailsScreen
-import ufr.mim.devmobile.screens.HomeScreen
-import ufr.mim.devmobile.screens.ListScreen
-import ufr.mim.netfloux.navigation.BooksNavigationComponent
+import ufr.mim.devmobile.navigation.NavigationAddScreen
+import ufr.mim.devmobile.navigation.NavigationHomeScreen
+import ufr.mim.devmobile.navigation.NavigationListScreen
 
 @Composable
-fun ContentView(MainBar: Boolean,
+fun ContentView(mainBar: Boolean,
                 progressViewModel: ProgressViewModel,
                 favoriteViewModel: FavoriteViewModel
                 //booksViewModel: BooksViewModel
@@ -54,7 +49,7 @@ fun ContentView(MainBar: Boolean,
 
 
     Scaffold(
-        topBar = { MyTopBar(MainBar, addScreenNavController) },
+        topBar = { MyTopBar(mainBar, addScreenNavController) },
         bottomBar = { BottomBar(selectedTab, icons) }
     ) { paddingValues ->
         // Section centrale change en fonction de l'onglet
@@ -66,15 +61,25 @@ fun ContentView(MainBar: Boolean,
         ) { tabIndex ->
             when (tabIndex) {
                 0 -> {
-                    //HomeScreen()
-                    AddDetailsScreen(progressViewModel, favoriteViewModel, { }, { })
+                    NavigationHomeScreen(
+                        progressViewModel,
+                        favoriteViewModel
+                    )
+                    //AddDetailsScreen(progressViewModel, favoriteViewModel, { }, { })
                 }
                 1 -> {
-                    BooksNavigationComponent(progressViewModel, favoriteViewModel, addScreenNavController)
+                    NavigationAddScreen(
+                        progressViewModel,
+                        favoriteViewModel,
+                        addScreenNavController
+                    )
                 }
 
                 2 -> {
-                    ListScreen()
+                    NavigationListScreen(
+                        progressViewModel,
+                        favoriteViewModel
+                    )
                 }
             }
         }

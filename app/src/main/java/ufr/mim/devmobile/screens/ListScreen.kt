@@ -3,8 +3,10 @@ package ufr.mim.devmobile.screens
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -21,26 +23,30 @@ import ufr.mim.devmobile.components.ListesMinimize
 import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable
-fun ListScreen() {
-    Column(
+fun ListScreen(onViewDetails: (String) -> Unit, onListDetails: (String) -> Unit) {
+    LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .padding(0.dp, MainPadding),
         verticalArrangement = Arrangement.spacedBy(MainPadding, alignment = Alignment.Top),
     ) {
-        var searchValue by remember { mutableStateOf(TextFieldValue("")) }
+        item {
+            var searchValue by remember { mutableStateOf(TextFieldValue("")) }
 
-        BookSearchBar(
-            text = "Rechercher un livre..",
-            value = searchValue,
-            onValueChange = { value ->
-                searchValue = value
-            }
-        )
+            BookSearchBar(
+                text = "Rechercher un livre..",
+                value = searchValue,
+                onValueChange = { value ->
+                    searchValue = value
+                }
+            )
+        }
 
-        ListesMinimize("Livres Favoris")
-        ListesMinimize("Livres à acheter")
-        ListesMinimize(" Livres déjà lus")
+        item {
+            ListesMinimize("Livres Favoris", onViewDetails, onListDetails)
+            ListesMinimize("Livres à acheter", onViewDetails, onListDetails)
+            ListesMinimize(" Livres déjà lus", onViewDetails, onListDetails)
+        }
     }
 }

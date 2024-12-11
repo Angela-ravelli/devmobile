@@ -2,6 +2,7 @@ package ufr.mim.devmobile.components
 
 import android.widget.ImageView
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -30,24 +31,25 @@ import ufr.mim.devmobile.R
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun MyTopBar(
-    MainBar: Boolean,
+    mainBar: Boolean,
     navController: NavHostController
 ) {
     TopAppBar(
-        modifier = Modifier.height(70.dp),
+        modifier = Modifier.height(80.dp),
         title = {
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                if(MainBar) {
+                //if(mainBar) {
                     Image(
                         painter = painterResource(id = R.drawable.logo),
                         contentDescription = "Logo",
                         modifier = Modifier
                             .size(50.dp)
                             .padding(end = 8.dp)
+                            .clickable { navController.popBackStack() }
                     )
-                }
+                /*}
                 else {
                     IconButton(
                         onClick = { navController.popBackStack() }
@@ -58,7 +60,7 @@ fun MyTopBar(
                             contentDescription = "Flèche vers la gauche",
                         )
                     }
-                }
+                }*/
                 Text(
                     text = "ChapterBox",
                     color = MaterialTheme.colorScheme.onPrimary,

@@ -29,7 +29,8 @@ import ufr.mim.devmobile.data.ProgressViewModel
 import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable
-fun DetailsScreen(id: String?,
+fun DetailsScreen(
+    //id: String?,
     progressViewModel: ProgressViewModel,
     favoriteViewModel: FavoriteViewModel,
 ) {
