@@ -22,6 +22,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ufr.mim.devmobile.components.ProgressInput
 import ufr.mim.devmobile.components.fileSearcher
+import ufr.mim.devmobile.mapper.BookRepository
+import ufr.mim.devmobile.model.Books
 import ufr.mim.devmobile.viewmodel.ProgressViewModel
 import ufr.mim.devmobile.ui.theme.MainPadding
 
@@ -142,7 +144,21 @@ fun AddDetailsScreen(
                 }
 
                 Button(
-                    onClick = onSave,
+                    onClick = {
+                        BookRepository.bookList.add(Books(
+                            BookRepository.bookList.last().id+1,
+                            bookTitle,
+                            releaseDate.toInt(),
+                            genre.split(","),
+                            author,
+                            summary,
+                            0,
+                            pageCount.toInt(),
+                            emptyList(),
+                            publisher,
+                            ""
+                        ))
+                    },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.onSurface
                     )

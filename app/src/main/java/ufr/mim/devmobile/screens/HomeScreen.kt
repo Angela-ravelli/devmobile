@@ -98,11 +98,6 @@ fun HomeScreen(
         )
     }
 
-    /* *** TEST AJOUT LIVRE */
-    val new = Books(21, "titre", 2024, emptyList(), "auteur", "plot", 23, 345, emptyList(), "editeur", "")
-    BookRepository.bookList.add(new)
-
-
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
