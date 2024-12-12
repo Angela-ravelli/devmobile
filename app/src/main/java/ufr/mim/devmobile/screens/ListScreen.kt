@@ -46,7 +46,7 @@ fun ListScreen(onViewDetails: (String) -> Unit, onListDetails: (String) -> Unit)
         item {
             ListesMinimize("Livres Favoris", onViewDetails, onListDetails)
             ListesMinimize("Livres à acheter", onViewDetails, onListDetails)
-            ListesMinimize(" Livres déjà lus", onViewDetails, onListDetails)
+            ListesMinimize("Livres déjà lus", onViewDetails, onListDetails)
         }
     }
 }

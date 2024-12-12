@@ -22,6 +22,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import ufr.mim.devmobile.R
 import ufr.mim.devmobile.data.BookRepository
+import ufr.mim.devmobile.data.DataList
 import ufr.mim.devmobile.data.bookData
 import ufr.mim.devmobile.data.mapToMyImageResource
 import ufr.mim.devmobile.mapper.BookMapper
@@ -71,14 +72,14 @@ fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
             items(6) { index ->
                 val startPadding = if(index == 0) MainPadding else 0.dp
                 Image(
-                    painter = painterResource(id = BookRepository.bookList[index].image.mapToMyImageResource()),
-                    contentDescription = BookRepository.bookList[index].image,
+                    painter = painterResource(id = nameList.listChoice()[index].image.mapToMyImageResource()),
+                    contentDescription = nameList.listChoice()[index].image,
                     modifier = Modifier
                         .fillMaxHeight()
                         .padding(start = startPadding, end = MainPadding)
                         .clickable {
-                            Log.d("ID Liste ", BookRepository.bookList[index].id.toString())
-                            onViewDetails(BookRepository.bookList[index].id.toString()) }
+                            Log.d("ID Liste ", nameList.listChoice()[index].id.toString())
+                            onViewDetails(nameList.listChoice()[index].id.toString()) }
                 )
             }
 
@@ -87,4 +88,31 @@ fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
             }
         }
     }
+}
+
+fun String.listChoice() : MutableList<Books> {
+    var listReturn = mutableListOf<Books>()
+    var listInt = mutableListOf<Int>()
+    when (this) {
+        "Ma bibliothèque" -> { listReturn = BookRepository.bookList }
+        "Livres en cours" -> { listInt = DataList.listEnCours }
+        "Livres en attente" -> { listInt = DataList.listAttente }
+        "Suggestions" -> { listInt = DataList.suggestion }
+        "Romance" -> { listInt = DataList.romance }
+        "Science-fiction" -> { listInt = DataList.science }
+        "Policier" -> { listInt = DataList.policier }
+        "Livres Favoris" -> { listInt = DataList.listFavoris }
+        "Livres à acheter" -> { listInt = DataList.listAcheter }
+        "Livres déjà lus" -> { listInt = DataList.listLu }
+        else -> { listReturn = BookRepository.bookList }
+    }
+    if (listReturn.isEmpty()) {
+        BookRepository.bookList.forEach { book ->
+            if (book.id in listInt) {
+                listReturn.add(book)
+            }
+        }
+    }
+
+    return listReturn
 }

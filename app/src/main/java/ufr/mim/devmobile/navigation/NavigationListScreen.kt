@@ -34,11 +34,11 @@ fun NavigationListScreen(progressViewModel: ProgressViewModel, favoriteViewModel
         }
 
         composable(
-            route = ListScreens.DetailsScreen.name + "/{id}",
+            route = ListScreens.DetailsScreen.route + "/{id}",
             arguments = listOf(navArgument(name = "id") { type = NavType.StringType })
-        ) { id ->
+        ) { backStackEntry ->
             DetailsScreen(
-                id = id.arguments?.getString("id"),
+                id = backStackEntry.arguments?.getString("id"),
                 progressViewModel = progressViewModel,
                 favoriteViewModel = favoriteViewModel
             )
