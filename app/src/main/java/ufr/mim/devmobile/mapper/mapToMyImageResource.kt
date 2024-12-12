@@ -27,6 +27,6 @@ fun String.mapToMyImageResource() : Int =
         "qui_es_tu_alaska" -> { R.drawable.qui_es_tu_alaska }
         "complot" -> { R.drawable.complot }
         else -> {
-            R.drawable.vide
+            R.drawable.image_de_base
         }
     }

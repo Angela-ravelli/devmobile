@@ -1,9 +1,13 @@
 package ufr.mim.devmobile.navigation
 
+import NavigationViewModel
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
@@ -15,9 +19,16 @@ import ufr.mim.devmobile.screens.LibrairyScreen
 @Composable
 fun NavigationHomeScreen(
                          favoriteViewModel: FavoriteViewModel,
-                         userViewModel: UserViewModel
+                         userViewModel: UserViewModel,
+                         navigationViewModel: NavigationViewModel
 ) {
     val navController = rememberNavController()
+
+    val currentBackStackEntry by navController.currentBackStackEntryAsState()
+    LaunchedEffect(currentBackStackEntry) {
+        val isInDepth = currentBackStackEntry?.destination?.route != HomeScreens.HomeScreen.route
+        navigationViewModel.setInDepthNavigation(isInDepth)
+    }
 
     NavHost(
         navController = navController,

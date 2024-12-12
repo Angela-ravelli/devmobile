@@ -1,5 +1,6 @@
 package ufr.mim.devmobile.components
 
+import NavigationViewModel
 import android.widget.ImageView
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -21,6 +22,8 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -32,35 +35,33 @@ import ufr.mim.devmobile.R
 @Composable
 fun MyTopBar(
     mainBar: Boolean,
-    navController: NavHostController
+    navController: NavHostController,
+    navigationViewModel: NavigationViewModel
 ) {
+    val isInDepthNavigation by navigationViewModel.isInDepthNavigation.collectAsState()
+
     TopAppBar(
         modifier = Modifier.height(80.dp),
         title = {
-            Row(
-                verticalAlignment = Alignment.CenterVertically
-            ) {
-                //if(mainBar) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                if (isInDepthNavigation) {
+                    IconButton(onClick = { navController.popBackStack() }
+                    ) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                            contentDescription = "Back",
+                            tint = MaterialTheme.colorScheme.onPrimary
+                        )
+                    }
+                } else {
                     Image(
                         painter = painterResource(id = R.drawable.logo),
                         contentDescription = "Logo",
                         modifier = Modifier
                             .size(50.dp)
                             .padding(end = 8.dp)
-                            .clickable { navController.popBackStack() }
                     )
-                /*}
-                else {
-                    IconButton(
-                        onClick = { navController.popBackStack() }
-                    ){
-                        Icon(
-                            tint = MaterialTheme.colorScheme.onPrimary,
-                            imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = "Flèche vers la gauche",
-                        )
-                    }
-                }*/
+                }
                 Text(
                     text = "ChapterBox",
                     color = MaterialTheme.colorScheme.onPrimary,

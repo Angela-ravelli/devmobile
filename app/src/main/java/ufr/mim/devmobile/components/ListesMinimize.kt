@@ -29,16 +29,6 @@ import ufr.mim.devmobile.viewmodel.BookViewModel
 @Composable
 fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
                    onListDetails: (String) -> Unit) {
-    /*val bookListDto: BookDto = Json.decodeFromString(bookData)
-    val bookMapper = BookMapper()
-    val bookList: List<Books> = bookListDto.books.map { bookMapper.mapBookDtoToBook(it) }*/
-
-    //val bookData: String = encodeBooksToJson(bookList)
-    //val filePath = "C:\\Users\\ravel\\Desktop\\devmobile\\app\\src\\main\\java\\ufr\\mim\\devmobile\\data\\Data.kt"
-    //writeJsonToFile(filePath, bookData)
-    //updateFile(filePath, bookData)
-
-    //val books by booksViewModel.allBooks.collectAsState()
 
     // Affiche le nom de la liste
     Column (
@@ -62,7 +52,7 @@ fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
                 ),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            items(6) { index ->
+            items(nameList.listChoice().size) { index ->
                 val startPadding = if(index == 0) MainPadding else 0.dp
                 Image(
                     painter = painterResource(id = nameList.listChoice()[index].image.mapToMyImageResource()),
