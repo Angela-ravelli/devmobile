@@ -1,13 +1,12 @@
 package ufr.mim.devmobile.navigation
 
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import ufr.mim.devmobile.data.FavoriteViewModel
-import ufr.mim.devmobile.data.ProgressViewModel
+import ufr.mim.devmobile.viewmodel.FavoriteViewModel
+import ufr.mim.devmobile.viewmodel.ProgressViewModel
 import ufr.mim.devmobile.screens.AddDetailsScreen
 import ufr.mim.devmobile.screens.AddScreen
 import ufr.mim.devmobile.screens.DetailsScreen

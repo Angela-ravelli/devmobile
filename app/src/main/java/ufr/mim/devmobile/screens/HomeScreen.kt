@@ -1,6 +1,5 @@
 package ufr.mim.devmobile.screens
 
-import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,9 +27,8 @@ import androidx.compose.ui.unit.dp
 import ufr.mim.devmobile.components.BookSearchBar
 import ufr.mim.devmobile.components.ListesMinimize
 import ufr.mim.devmobile.components.StatsHomeCard
-import ufr.mim.devmobile.components.dropShadow
-import ufr.mim.devmobile.data.BookRepository
-import ufr.mim.devmobile.data.UserViewModel
+import ufr.mim.devmobile.mapper.BookRepository
+import ufr.mim.devmobile.viewmodel.UserViewModel
 import ufr.mim.devmobile.model.Books
 import ufr.mim.devmobile.ui.theme.MainPadding
 

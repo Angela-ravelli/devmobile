@@ -4,13 +4,14 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import ufr.mim.devmobile.components.BookInList
-import ufr.mim.devmobile.data.BookRepository
-import ufr.mim.devmobile.data.FavoriteViewModel
+import ufr.mim.devmobile.mapper.BookRepository
+import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 
 @Composable
 fun LibrairyScreen(nameList: String,
                    onViewDetails: (String) -> Unit,
-                   favoriteViewModel: FavoriteViewModel) {
+                   favoriteViewModel: FavoriteViewModel
+) {
 
     val bookList = BookRepository.bookList
 

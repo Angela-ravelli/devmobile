@@ -1,4 +1,4 @@
-package ufr.mim.devmobile.data
+package ufr.mim.devmobile.mapper
 
 import androidx.annotation.DrawableRes
 import ufr.mim.devmobile.R

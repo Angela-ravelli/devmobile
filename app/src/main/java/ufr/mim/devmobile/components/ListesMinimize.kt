@@ -1,7 +1,6 @@
 package ufr.mim.devmobile.components
 
 import android.util.Log
-import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -18,20 +17,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
-import ufr.mim.devmobile.R
-import ufr.mim.devmobile.data.BookRepository
+import kotlinx.coroutines.flow.forEach
+import kotlinx.coroutines.flow.toList
+import ufr.mim.devmobile.mapper.BookRepository
 import ufr.mim.devmobile.data.DataList
-import ufr.mim.devmobile.data.bookData
-import ufr.mim.devmobile.data.mapToMyImageResource
-import ufr.mim.devmobile.mapper.BookMapper
-import ufr.mim.devmobile.model.BookDto
+import ufr.mim.devmobile.mapper.mapToMyImageResource
 import ufr.mim.devmobile.model.Books
 import ufr.mim.devmobile.ui.theme.MainPadding
-import java.io.File
-
-//var bookList : MutableList<Books> = BookRepository.bookList.toMutableList()
+import ufr.mim.devmobile.viewmodel.BookViewModel
 
 @Composable
 fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
@@ -107,7 +100,8 @@ fun String.listChoice() : MutableList<Books> {
         else -> { listReturn = BookRepository.bookList }
     }
     if (listReturn.isEmpty()) {
-        BookRepository.bookList.forEach { book ->
+        BookViewModel.initializeBooks()
+        BookViewModel.bookList.value.forEach { book ->
             if (book.id in listInt) {
                 listReturn.add(book)
             }

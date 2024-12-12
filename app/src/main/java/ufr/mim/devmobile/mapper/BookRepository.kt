@@ -1,9 +1,10 @@
-package ufr.mim.devmobile.data
+package ufr.mim.devmobile.mapper
 
 import kotlinx.serialization.json.Json
-import ufr.mim.devmobile.mapper.BookMapper
+import ufr.mim.devmobile.data.bookData
 import ufr.mim.devmobile.model.BookDto
 import ufr.mim.devmobile.model.Books
+import ufr.mim.devmobile.viewmodel.BookViewModel
 
 object BookRepository {
     private val bookMapper = BookMapper()

@@ -1,4 +1,4 @@
-package ufr.mim.devmobile.data
+package ufr.mim.devmobile.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

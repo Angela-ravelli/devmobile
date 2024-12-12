@@ -14,9 +14,9 @@ import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
 import androidx.navigation.compose.rememberNavController
 import ufr.mim.devmobile.R
-import ufr.mim.devmobile.data.FavoriteViewModel
-import ufr.mim.devmobile.data.ProgressViewModel
-import ufr.mim.devmobile.data.UserViewModel
+import ufr.mim.devmobile.viewmodel.FavoriteViewModel
+import ufr.mim.devmobile.viewmodel.ProgressViewModel
+import ufr.mim.devmobile.viewmodel.UserViewModel
 import ufr.mim.devmobile.navigation.NavigationAddScreen
 import ufr.mim.devmobile.navigation.NavigationHomeScreen
 import ufr.mim.devmobile.navigation.NavigationListScreen
@@ -68,7 +68,6 @@ fun ContentView(mainBar: Boolean,
                         favoriteViewModel,
                         userViewModel
                     )
-                    //AddDetailsScreen(progressViewModel, favoriteViewModel, { }, { })
                 }
                 1 -> {
                     NavigationAddScreen(

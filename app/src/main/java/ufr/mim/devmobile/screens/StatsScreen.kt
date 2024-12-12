@@ -20,7 +20,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import ufr.mim.devmobile.R
-import ufr.mim.devmobile.data.UserViewModel
+import ufr.mim.devmobile.viewmodel.UserViewModel
 import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable

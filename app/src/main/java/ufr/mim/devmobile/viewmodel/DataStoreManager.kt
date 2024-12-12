@@ -1,4 +1,4 @@
-package ufr.mim.devmobile.data
+package ufr.mim.devmobile.viewmodel
 
 import android.content.Context
 import androidx.datastore.preferences.core.edit
@@ -8,7 +8,6 @@ import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import androidx.datastore.preferences.core.stringSetPreferencesKey
-import ufr.mim.devmobile.model.Books
 
 // Extension DataStore
 val Context.dataStore by preferencesDataStore("user_preferences")

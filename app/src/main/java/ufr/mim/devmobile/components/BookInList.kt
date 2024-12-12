@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
-import androidx.compose.material.icons.outlined.FavoriteBorder
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -19,10 +18,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import org.w3c.dom.NameList
-import ufr.mim.devmobile.R
-import ufr.mim.devmobile.data.FavoriteViewModel
-import ufr.mim.devmobile.data.mapToMyImageResource
+import ufr.mim.devmobile.viewmodel.FavoriteViewModel
+import ufr.mim.devmobile.mapper.mapToMyImageResource
 import ufr.mim.devmobile.model.Books
 import ufr.mim.devmobile.ui.theme.MainPadding
 
@@ -63,6 +60,6 @@ fun BookInList(book: Books,
             text = book.title
         )
 
-        PercentageProgressBar(0.toFloat())
+        //PercentageProgressBar(0.toFloat())
     }
 }

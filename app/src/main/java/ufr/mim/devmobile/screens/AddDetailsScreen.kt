@@ -22,7 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ufr.mim.devmobile.components.ProgressInput
 import ufr.mim.devmobile.components.fileSearcher
-import ufr.mim.devmobile.data.ProgressViewModel
+import ufr.mim.devmobile.viewmodel.ProgressViewModel
 import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable

@@ -7,13 +7,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewmodel.compose.viewModel
 import ufr.mim.devmobile.components.ContentView
-import ufr.mim.devmobile.data.BooksViewModel
-import ufr.mim.devmobile.data.DataStoreManager
-import ufr.mim.devmobile.data.FavoriteViewModel
-import ufr.mim.devmobile.data.ProgressViewModel
-import ufr.mim.devmobile.data.UserViewModel
+import ufr.mim.devmobile.viewmodel.DataStoreManager
+import ufr.mim.devmobile.viewmodel.FavoriteViewModel
+import ufr.mim.devmobile.viewmodel.ProgressViewModel
+import ufr.mim.devmobile.viewmodel.UserViewModel
 import ufr.mim.devmobile.ui.theme.BookTheme
 
 class MainActivity : ComponentActivity() {
