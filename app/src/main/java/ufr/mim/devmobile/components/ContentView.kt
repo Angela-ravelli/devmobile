@@ -1,6 +1,5 @@
 package ufr.mim.devmobile.components
 
-import NavigationViewModel
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.padding
@@ -21,12 +20,13 @@ import ufr.mim.devmobile.navigation.NavigationAddScreen
 import ufr.mim.devmobile.navigation.NavigationHomeScreen
 import ufr.mim.devmobile.navigation.NavigationListScreen
 import ufr.mim.devmobile.screens.StatsScreen
+import ufr.mim.devmobile.viewmodel.NavigationViewModel
 
 @Composable
 fun ContentView(mainBar: Boolean,
                 favoriteViewModel: FavoriteViewModel,
                 userViewModel: UserViewModel
-                ) {
+) {
 
     var selectedTab by remember { mutableIntStateOf(0) }
 
@@ -63,7 +63,7 @@ fun ContentView(mainBar: Boolean,
     }
 
     Scaffold(
-        topBar = { MyTopBar(mainBar, currentNavController, navigationViewModel) },
+        topBar = { MyTopBar(currentNavController, navigationViewModel) },
         bottomBar = { BottomBar(selectedTab, icons) }
     ) { paddingValues ->
         // Section centrale change en fonction de l'onglet

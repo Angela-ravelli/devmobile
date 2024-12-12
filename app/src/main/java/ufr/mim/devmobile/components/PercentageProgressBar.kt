@@ -20,7 +20,7 @@ import ufr.mim.devmobile.ui.theme.MainPadding
 
 
 @Composable
-fun PercentageProgressBar(progress: Float, nbpages: Int) {
+fun PercentageProgressBar(progress: Float, nbpages: Float) {
 
     Row(
         verticalAlignment = Alignment.CenterVertically,

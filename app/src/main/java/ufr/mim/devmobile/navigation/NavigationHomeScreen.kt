@@ -1,6 +1,6 @@
 package ufr.mim.devmobile.navigation
 
-import NavigationViewModel
+import ufr.mim.devmobile.viewmodel.NavigationViewModel
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -39,8 +39,8 @@ fun NavigationHomeScreen(
                 onViewDetails = {id ->
                     navController.navigate(HomeScreens.DetailsScreen.route + "/$id")
                 },
-                onListDetails = {
-                    navController.navigate(HomeScreens.LibrairyScreen.route)
+                onListDetails = { nameList ->
+                    navController.navigate(HomeScreens.LibrairyScreen.route + "/$nameList")
                 },
                 userViewModel = userViewModel
             )
@@ -56,11 +56,16 @@ fun NavigationHomeScreen(
             )
         }
 
-        composable(HomeScreens.LibrairyScreen.route) {
+        composable(
+            route = HomeScreens.LibrairyScreen.route + "/{nameList}",
+            arguments = listOf(navArgument(name = "nameList") { type = NavType.StringType })
+        ){ backStackEntry ->
             LibrairyScreen(
-                nameList = "",
+                nameList = backStackEntry.arguments?.getString("nameList"),
+                onViewDetails = { id ->
+                    navController.navigate(HomeScreens.DetailsScreen.route + "/$id")
+                },
                 favoriteViewModel = favoriteViewModel,
-                onViewDetails = { navController.navigate(HomeScreens.DetailsScreen.route) }
             )
         }
     }

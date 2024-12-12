@@ -8,7 +8,7 @@ import ufr.mim.devmobile.mapper.BookRepository
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 
 @Composable
-fun LibrairyScreen(nameList: String,
+fun LibrairyScreen(nameList: String?,
                    onViewDetails: (String) -> Unit,
                    favoriteViewModel: FavoriteViewModel
 ) {

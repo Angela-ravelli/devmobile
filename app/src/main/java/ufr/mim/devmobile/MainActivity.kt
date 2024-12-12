@@ -12,6 +12,7 @@ import ufr.mim.devmobile.viewmodel.DataStoreManager
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 import ufr.mim.devmobile.viewmodel.UserViewModel
 import ufr.mim.devmobile.ui.theme.BookTheme
+import ufr.mim.devmobile.viewmodel.NavigationViewModel
 
 class MainActivity : ComponentActivity() {
 
@@ -40,7 +41,7 @@ class MainActivity : ComponentActivity() {
             BookTheme {
                 ContentView(false,
                     favoriteViewModel = favoriteViewModel,
-                    userViewModel = userViewModel
+                    userViewModel = userViewModel,
                 )
             }
         }

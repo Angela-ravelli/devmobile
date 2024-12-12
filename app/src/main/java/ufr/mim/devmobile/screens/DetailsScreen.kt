@@ -151,7 +151,7 @@ fun DetailsScreen(
                         BookRepository.bookList[idd].id.toString(), pagesInt
                     )
                 },
-                nbpages = BookRepository.bookList[idd].pages
+                nbpages = BookRepository.bookList[idd].pages.toString()
             )
         }
     }

@@ -24,13 +24,11 @@ import ufr.mim.devmobile.components.ProgressInput
 import ufr.mim.devmobile.components.fileSearcher
 import ufr.mim.devmobile.mapper.BookRepository
 import ufr.mim.devmobile.model.Books
-import ufr.mim.devmobile.mapper.BookRepository
 import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable
 fun AddDetailsScreen(
     onCancel: () -> Unit,
-    onSave: () -> Unit
 ) {
     var bookTitle by remember { mutableStateOf("Titre du livre") }
     var author by remember { mutableStateOf("Auteur") }
@@ -123,7 +121,7 @@ fun AddDetailsScreen(
                         progression, pagesInt
                     )
                 },
-                nbpages = pageCount.toInt()
+                nbpages = pageCount
             )
         }
 

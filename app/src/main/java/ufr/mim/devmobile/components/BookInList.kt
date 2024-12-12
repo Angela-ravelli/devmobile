@@ -26,7 +26,7 @@ import ufr.mim.devmobile.ui.theme.MainPadding
 @Composable
 fun BookInList(book: Books,
                favoriteViewModel: FavoriteViewModel,
-               nameList: String,
+               nameList: String?,
                onViewDetails: (String) -> Unit){
     val isFav by favoriteViewModel.favoriteBooks.collectAsState()
     val index = book.id.toString()

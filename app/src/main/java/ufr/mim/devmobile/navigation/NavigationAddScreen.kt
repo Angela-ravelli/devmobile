@@ -1,6 +1,6 @@
 package ufr.mim.devmobile.navigation
 
-import NavigationViewModel
+import ufr.mim.devmobile.viewmodel.NavigationViewModel
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -14,6 +14,7 @@ import ufr.mim.devmobile.screens.AddDetailsScreen
 import ufr.mim.devmobile.screens.AddScreen
 import ufr.mim.devmobile.screens.DetailsScreen
 import androidx.navigation.compose.rememberNavController
+import ufr.mim.devmobile.screens.LibrairyScreen
 
 @Composable
 fun NavigationAddScreen(
@@ -41,8 +42,8 @@ fun NavigationAddScreen(
                 onViewDetails = { id ->
                     navController.navigate(AddScreens.DetailsScreen.route+ "/$id")
                 },
-                onListDetails = {
-                    navController.navigate(AddScreens.LibrairyScreen.route)
+                onListDetails = { nameList ->
+                    navController.navigate(AddScreens.LibrairyScreen.route+ "/$nameList")
                 }
             )
         }
@@ -50,7 +51,6 @@ fun NavigationAddScreen(
         composable(AddScreens.AddDetailsScreen.route) {
             AddDetailsScreen(
                 onCancel = { navController.popBackStack() },
-                onSave = { navController.navigate(AddScreens.DetailsScreen.route) }
             )
         }
 
@@ -61,6 +61,19 @@ fun NavigationAddScreen(
             DetailsScreen(
                 id = backStackEntry.arguments?.getString("id"),
                 favoriteViewModel = favoriteViewModel
+            )
+        }
+
+        composable(
+            route = AddScreens.LibrairyScreen.route + "/{nameList}",
+            arguments = listOf(navArgument(name = "nameList") { type = NavType.StringType })
+        ){ backStackEntry ->
+            LibrairyScreen(
+                nameList = backStackEntry.arguments?.getString("nameList"),
+                onViewDetails = { id ->
+                    navController.navigate(AddScreens.DetailsScreen.route + "/$id")
+                },
+                favoriteViewModel = favoriteViewModel,
             )
         }
     }
