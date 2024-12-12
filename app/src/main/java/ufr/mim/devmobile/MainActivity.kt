@@ -13,6 +13,7 @@ import ufr.mim.devmobile.data.BooksViewModel
 import ufr.mim.devmobile.data.DataStoreManager
 import ufr.mim.devmobile.data.FavoriteViewModel
 import ufr.mim.devmobile.data.ProgressViewModel
+import ufr.mim.devmobile.data.UserViewModel
 import ufr.mim.devmobile.ui.theme.BookTheme
 
 class MainActivity : ComponentActivity() {
@@ -36,13 +37,13 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    /*private val bookViewModel by viewModels<BooksViewModel> {
+    private val userViewModel by viewModels<UserViewModel> {
         object : ViewModelProvider.Factory {
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return BooksViewModel(dataStoreManager) as T
+                return UserViewModel(dataStoreManager) as T
             }
         }
-    }*/
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,9 +52,9 @@ class MainActivity : ComponentActivity() {
             BookTheme {
                 ContentView(false,
                     progressViewModel = progressViewModel,
-                    favoriteViewModel = favoriteViewModel
-                   // booksViewModel = bookViewModel
-                    )
+                    favoriteViewModel = favoriteViewModel,
+                    userViewModel = userViewModel
+                )
             }
         }
     }

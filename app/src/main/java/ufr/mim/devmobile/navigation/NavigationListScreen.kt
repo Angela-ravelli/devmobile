@@ -41,6 +41,8 @@ fun NavigationListScreen(progressViewModel: ProgressViewModel, favoriteViewModel
 
         composable(ListScreens.LibrairyScreen.route) {
             LibrairyScreen(
+                nameList = "",
+                favoriteViewModel = favoriteViewModel,
                 onViewDetails = { ListScreens.LibrairyScreen.route }
             )
         }

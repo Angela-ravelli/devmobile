@@ -16,15 +16,17 @@ import androidx.navigation.compose.rememberNavController
 import ufr.mim.devmobile.R
 import ufr.mim.devmobile.data.FavoriteViewModel
 import ufr.mim.devmobile.data.ProgressViewModel
+import ufr.mim.devmobile.data.UserViewModel
 import ufr.mim.devmobile.navigation.NavigationAddScreen
 import ufr.mim.devmobile.navigation.NavigationHomeScreen
 import ufr.mim.devmobile.navigation.NavigationListScreen
+import ufr.mim.devmobile.screens.StatsScreen
 
 @Composable
 fun ContentView(mainBar: Boolean,
                 progressViewModel: ProgressViewModel,
-                favoriteViewModel: FavoriteViewModel
-                //booksViewModel: BooksViewModel
+                favoriteViewModel: FavoriteViewModel,
+                userViewModel: UserViewModel
                 ) {
 
     var selectedTab by remember { mutableIntStateOf(0) }
@@ -63,7 +65,8 @@ fun ContentView(mainBar: Boolean,
                 0 -> {
                     NavigationHomeScreen(
                         progressViewModel,
-                        favoriteViewModel
+                        favoriteViewModel,
+                        userViewModel
                     )
                     //AddDetailsScreen(progressViewModel, favoriteViewModel, { }, { })
                 }
@@ -80,6 +83,9 @@ fun ContentView(mainBar: Boolean,
                         progressViewModel,
                         favoriteViewModel
                     )
+                }
+                3 -> {
+                    StatsScreen(userViewModel)
                 }
             }
         }

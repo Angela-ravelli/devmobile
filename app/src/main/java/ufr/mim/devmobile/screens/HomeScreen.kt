@@ -2,28 +2,102 @@ package ufr.mim.devmobile.screens
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material3.AlertDialog
+import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
 import ufr.mim.devmobile.components.BookSearchBar
 import ufr.mim.devmobile.components.ListesMinimize
 import ufr.mim.devmobile.components.StatsHomeCard
+import ufr.mim.devmobile.components.dropShadow
+import ufr.mim.devmobile.data.UserViewModel
 import ufr.mim.devmobile.ui.theme.MainPadding
 
 
 @Composable
-fun HomeScreen(onViewDetails: (String) -> Unit, onListDetails: (String) -> Unit) { //booksViewModel: BooksViewModel) {
+fun HomeScreen(
+    onViewDetails: (String) -> Unit,
+    onListDetails: (String) -> Unit,
+    userViewModel: UserViewModel
+) {
+    val userName by userViewModel.userName.collectAsState()
+
+    // État de la pop-up
+    var showDialog by remember { mutableStateOf(userName == null) }
+    var inputName by remember { mutableStateOf("") }
+
+    // Afficher la pop-up si le prénom n'a pas été enregistré
+    if (showDialog) {
+        AlertDialog(
+            onDismissRequest = {},
+            title = {
+                Text(
+                    "Bienvenue !",
+                    color = MaterialTheme.colorScheme.onPrimary
+                )
+            },
+            text = {
+                Column(
+                    modifier = Modifier
+                        .background(color = MaterialTheme.colorScheme.primary)
+                        .padding(16.dp)
+                ) {
+                    Text(
+                        "Entrez votre prénom :",
+                        color = MaterialTheme.colorScheme.onPrimary
+                    )
+                    TextField(
+                        value = inputName,
+                        onValueChange = { inputName = it },
+                        placeholder = { Text("Votre prénom", color = Color.Gray) },
+                        colors = TextFieldDefaults.colors(
+                            focusedContainerColor = Color.White,
+                            unfocusedContainerColor = Color.White,
+                            focusedTextColor = MaterialTheme.colorScheme.onPrimary,
+                            unfocusedTextColor = MaterialTheme.colorScheme.onPrimary
+                        )
+                    )
+                }
+            },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        userViewModel.saveUserName(inputName)
+                        showDialog = false
+                    },
+                    colors = ButtonColors(
+                        containerColor = MaterialTheme.colorScheme.tertiary,
+                        contentColor = MaterialTheme.colorScheme.onPrimary,
+                        disabledContainerColor = MaterialTheme.colorScheme.tertiary.copy(0.5f),
+                        disabledContentColor = MaterialTheme.colorScheme.onPrimary
+                    )
+                ) {
+                    Text("Valider", color = Color.Black)
+                }
+            },
+            containerColor = MaterialTheme.colorScheme.primary
+        )
+    }
+
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -38,18 +112,15 @@ fun HomeScreen(onViewDetails: (String) -> Unit, onListDetails: (String) -> Unit)
             BookSearchBar(
                 text = "Rechercher dans mes livres..",
                 value = searchValue,
-                onValueChange = { value ->
-                    searchValue = value
-                }
+                onValueChange = { value -> searchValue = value }
             )
         }
 
-        // Message de bienvenue
+        // Message de bienvenue avec le prénom enregistré
         item {
-            val name = "Angéla"
             Text(
                 modifier = Modifier.padding(MainPadding, 0.dp),
-                text = "Bonjour $name ! ",
+                text = "Bonjour ${userName ?: "Invité"} !",
                 color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.titleLarge
             )
@@ -62,6 +133,7 @@ fun HomeScreen(onViewDetails: (String) -> Unit, onListDetails: (String) -> Unit)
         item { ListesMinimize("Livres en attente", onViewDetails, onListDetails) }
     }
 }
+
 
 
 

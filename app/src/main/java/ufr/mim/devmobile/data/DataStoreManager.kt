@@ -3,6 +3,7 @@ package ufr.mim.devmobile.data
 import android.content.Context
 import androidx.datastore.preferences.core.edit
 import androidx.datastore.preferences.core.intPreferencesKey
+import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
@@ -18,6 +19,7 @@ class DataStoreManager(private val context: Context) {
         // Clés des préférences
         private val FAVORITES_KEY = stringSetPreferencesKey("favorite_books")
         private val PROGRESS_KEY = intPreferencesKey("reading_progress")
+        val USER_NAME = stringPreferencesKey("user_name")
         //private val BOOK_KEY = stringSetPreferencesKey("all_books")
     }
 
@@ -54,6 +56,17 @@ class DataStoreManager(private val context: Context) {
     suspend fun saveProgress(pages: Int) {
         context.dataStore.edit { preferences ->
             preferences[PROGRESS_KEY] = pages
+        }
+    }
+
+    // *** Gestion du prénom ***
+
+    val userName: Flow<String?> = context.dataStore.data
+        .map { preferences -> preferences[USER_NAME] }
+
+    suspend fun saveUserName(name: String) {
+        context.dataStore.edit { preferences ->
+            preferences[USER_NAME] = name
         }
     }
 
