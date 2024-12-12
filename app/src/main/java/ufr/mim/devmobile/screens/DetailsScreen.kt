@@ -1,5 +1,6 @@
 package ufr.mim.devmobile.screens
 
+import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -24,18 +25,24 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import ufr.mim.devmobile.R
 import ufr.mim.devmobile.components.ProgressInput
+import ufr.mim.devmobile.data.BookRepository
 import ufr.mim.devmobile.data.FavoriteViewModel
 import ufr.mim.devmobile.data.ProgressViewModel
+import ufr.mim.devmobile.data.mapToMyImageResource
 import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable
 fun DetailsScreen(
-    //id: String?,
+    id: String?,
     progressViewModel: ProgressViewModel,
     favoriteViewModel: FavoriteViewModel,
 ) {
     val isFav by favoriteViewModel.favoriteBooks.collectAsState()
-
+    if (id != null) {
+        Log.d("ID : ", id)
+    }
+    val id = (id?.toInt() ?: 0) -1
+    
     LazyColumn(
         modifier = Modifier.padding(MainPadding),
         verticalArrangement = Arrangement.spacedBy(MainPadding)
@@ -45,11 +52,13 @@ fun DetailsScreen(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(
-                    text = "Titre du livre",
-                    style = MaterialTheme.typography.headlineLarge,
-                    modifier = Modifier.weight(1f)
-                )
+                if (id != null) {
+                    Text(
+                        text = BookRepository.bookList[id].title,
+                        style = MaterialTheme.typography.headlineLarge,
+                        modifier = Modifier.weight(1f)
+                    )
+                }
 
                 IconButton(
                     onClick = {
@@ -73,48 +82,64 @@ fun DetailsScreen(
             }
         }
         item {
-            Text(
-                text = "Auteur"
-            )
+            if (id != null) {
+                Text(
+                    text = "Auteur : "+BookRepository.bookList[id.toInt()].author
+                )
+            }
         }
         item {
-            Image(
-                painter = painterResource(id = R.drawable.charlie),
-                contentDescription = "Couverture",
-                modifier = Modifier
-                    .size(500.dp)
-            )
+            if (id != null) {
+                Image(
+                    painter = painterResource(id = BookRepository.bookList[id.toInt()].image.mapToMyImageResource()),
+                        contentDescription = "Couverture",
+                        modifier = Modifier
+                            .size(500.dp)
+                    )
+            }
         }
         item {
-            Text(
-                text = "Résumé : "
-            )
+            if (id != null) {
+                Text(
+                    text = "Résumé : "+BookRepository.bookList[id.toInt()].plot
+                )
+            }
         }
         item {
-            Text(
-                text = "Genre : "
-            )
+            if (id != null) {
+                Text(
+                    text = "Genre : "+BookRepository.bookList[id.toInt()].genre.toString()
+                )
+            }
         }
         item {
-            Text(
-                text = "Date de sortie : "
-            )
+            if (id != null) {
+                Text(
+                    text = "Année de sortie : "+BookRepository.bookList[id.toInt()].year.toString()
+                )
+            }
         }
         item {
-            Text(
-                text = "Editeur : "
-            )
+            if (id != null) {
+                Text(
+                    text = "Editeur : "+BookRepository.bookList[id.toInt()].editor
+                )
+            }
         }
         item {
-            Text(
-                text = "Nombre de pages : "
-            )
+            if (id != null) {
+                Text(
+                    text = "Nombre de pages : "+BookRepository.bookList[id.toInt()].pages.toString()
+                )
+            }
         }
         item {
             Row {
-                Text(
-                    text = "Etiquettes : "
-                )
+                if (id != null) {
+                    Text(
+                        text = "Etiquette : "+BookRepository.bookList[id.toInt()].etiquette.toString()
+                    )
+                }
                 Card {  }
             }
         }

@@ -2,22 +2,24 @@ package ufr.mim.devmobile.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import ufr.mim.devmobile.data.FavoriteViewModel
 import ufr.mim.devmobile.data.ProgressViewModel
 import ufr.mim.devmobile.screens.AddDetailsScreen
 import ufr.mim.devmobile.screens.AddScreen
 import ufr.mim.devmobile.screens.DetailsScreen
+import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun NavigationAddScreen(
     progressViewModel: ProgressViewModel,
-    favoriteViewModel: FavoriteViewModel,
-    navController: NavHostController
+    favoriteViewModel: FavoriteViewModel
 ) {
 
-    // val navController = rememberNavController()
+    val navController = rememberNavController()
 
     NavHost(
         navController = navController,
@@ -26,10 +28,10 @@ fun NavigationAddScreen(
         composable(AddScreens.AddScreen.route) {
             AddScreen(
                 onDetails = {
-                    navController.navigate(AddScreens.AddDetailsScreen.route)
+                    navController.navigate(AddScreens.AddDetailsScreen.route )
                 },
-                onViewDetails = {
-                    navController.navigate(AddScreens.DetailsScreen.route)
+                onViewDetails = { id ->
+                    navController.navigate(AddScreens.DetailsScreen.route+ "/$id")
                 },
                 onListDetails = {
                     navController.navigate(AddScreens.LibrairyScreen.route)
@@ -45,11 +47,14 @@ fun NavigationAddScreen(
             )
         }
 
-        composable(AddScreens.DetailsScreen.route) {
+        composable(
+            route = AddScreens.DetailsScreen.route + "/{id}",
+            arguments = listOf(navArgument(name = "id") { type = NavType.StringType })
+        ) { backStackEntry  ->
             DetailsScreen(
-                //id = "",
+                id = backStackEntry.arguments?.getString("id"),
                 progressViewModel = progressViewModel,
-                favoriteViewModel = favoriteViewModel,
+                favoriteViewModel = favoriteViewModel
             )
         }
     }

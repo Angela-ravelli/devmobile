@@ -1,9 +1,11 @@
 package ufr.mim.devmobile.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import ufr.mim.devmobile.data.FavoriteViewModel
 import ufr.mim.devmobile.data.ProgressViewModel
 import ufr.mim.devmobile.screens.AddScreen
@@ -22,8 +24,8 @@ fun NavigationListScreen(progressViewModel: ProgressViewModel, favoriteViewModel
     ) {
         composable(ListScreens.ListScreen.route) {
             ListScreen(
-                onViewDetails = {
-                    navController.navigate(ListScreens.DetailsScreen.route)
+                onViewDetails = { id ->
+                    navController.navigate(ListScreens.DetailsScreen.route + "/$id")
                 },
                 onListDetails = {
                     navController.navigate(ListScreens.LibrairyScreen.route)
@@ -31,11 +33,14 @@ fun NavigationListScreen(progressViewModel: ProgressViewModel, favoriteViewModel
             )
         }
 
-        composable(ListScreens.DetailsScreen.route) {
+        composable(
+            route = ListScreens.DetailsScreen.name + "/{id}",
+            arguments = listOf(navArgument(name = "id") { type = NavType.StringType })
+        ) { id ->
             DetailsScreen(
-                //id = "",
+                id = id.arguments?.getString("id"),
                 progressViewModel = progressViewModel,
-                favoriteViewModel = favoriteViewModel,
+                favoriteViewModel = favoriteViewModel
             )
         }
 

@@ -1,5 +1,6 @@
 package ufr.mim.devmobile.screens
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -28,7 +29,9 @@ import ufr.mim.devmobile.components.BookSearchBar
 import ufr.mim.devmobile.components.ListesMinimize
 import ufr.mim.devmobile.components.StatsHomeCard
 import ufr.mim.devmobile.components.dropShadow
+import ufr.mim.devmobile.data.BookRepository
 import ufr.mim.devmobile.data.UserViewModel
+import ufr.mim.devmobile.model.Books
 import ufr.mim.devmobile.ui.theme.MainPadding
 
 
@@ -96,6 +99,10 @@ fun HomeScreen(
             containerColor = MaterialTheme.colorScheme.primary
         )
     }
+
+    /* *** TEST AJOUT LIVRE */
+    val new = Books(21, "titre", 2024, emptyList(), "auteur", "plot", 23, 345, emptyList(), "editeur", "")
+    BookRepository.bookList.add(new)
 
 
     LazyColumn(

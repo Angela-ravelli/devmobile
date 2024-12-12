@@ -73,8 +73,7 @@ fun ContentView(mainBar: Boolean,
                 1 -> {
                     NavigationAddScreen(
                         progressViewModel,
-                        favoriteViewModel,
-                        addScreenNavController
+                        favoriteViewModel
                     )
                 }
 

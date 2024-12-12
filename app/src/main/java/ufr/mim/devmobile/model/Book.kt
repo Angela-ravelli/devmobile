@@ -1,5 +1,8 @@
 package ufr.mim.devmobile.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class Books(
     val id: Int,
     val title: String,

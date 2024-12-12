@@ -1,5 +1,6 @@
 package ufr.mim.devmobile.components
 
+import android.util.Log
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -17,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import ufr.mim.devmobile.R
 import ufr.mim.devmobile.data.BookRepository
@@ -26,6 +28,9 @@ import ufr.mim.devmobile.mapper.BookMapper
 import ufr.mim.devmobile.model.BookDto
 import ufr.mim.devmobile.model.Books
 import ufr.mim.devmobile.ui.theme.MainPadding
+import java.io.File
+
+//var bookList : MutableList<Books> = BookRepository.bookList.toMutableList()
 
 @Composable
 fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
@@ -33,7 +38,11 @@ fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
     /*val bookListDto: BookDto = Json.decodeFromString(bookData)
     val bookMapper = BookMapper()
     val bookList: List<Books> = bookListDto.books.map { bookMapper.mapBookDtoToBook(it) }*/
-    val bookList = BookRepository.bookList
+
+    //val bookData: String = encodeBooksToJson(bookList)
+    //val filePath = "C:\\Users\\ravel\\Desktop\\devmobile\\app\\src\\main\\java\\ufr\\mim\\devmobile\\data\\Data.kt"
+    //writeJsonToFile(filePath, bookData)
+    //updateFile(filePath, bookData)
 
     //val books by booksViewModel.allBooks.collectAsState()
 
@@ -61,14 +70,15 @@ fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
         ) {
             items(6) { index ->
                 val startPadding = if(index == 0) MainPadding else 0.dp
-                //Log.d("DEBBUG", books.toString())
                 Image(
-                    painter = painterResource(id = bookList[index].image.mapToMyImageResource()),
-                    contentDescription = bookList[index].image,
+                    painter = painterResource(id = BookRepository.bookList[index].image.mapToMyImageResource()),
+                    contentDescription = BookRepository.bookList[index].image,
                     modifier = Modifier
                         .fillMaxHeight()
                         .padding(start = startPadding, end = MainPadding)
-                        .clickable { onViewDetails(bookList[index].id.toString()) }
+                        .clickable {
+                            Log.d("ID Liste ", BookRepository.bookList[index].id.toString())
+                            onViewDetails(BookRepository.bookList[index].id.toString()) }
                 )
             }
 
@@ -78,4 +88,3 @@ fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
         }
     }
 }
-

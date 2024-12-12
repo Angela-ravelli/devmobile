@@ -1,9 +1,11 @@
 package ufr.mim.devmobile.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import ufr.mim.devmobile.data.FavoriteViewModel
 import ufr.mim.devmobile.data.ProgressViewModel
 import ufr.mim.devmobile.data.UserViewModel
@@ -25,8 +27,8 @@ fun NavigationHomeScreen(progressViewModel: ProgressViewModel,
     ) {
         composable(HomeScreens.HomeScreen.route) {
             HomeScreen(
-                onViewDetails = {
-                    navController.navigate(HomeScreens.DetailsScreen.route)
+                onViewDetails = {id ->
+                    navController.navigate(HomeScreens.DetailsScreen.route + "/$id")
                 },
                 onListDetails = {
                     navController.navigate(HomeScreens.LibrairyScreen.route)
@@ -35,11 +37,14 @@ fun NavigationHomeScreen(progressViewModel: ProgressViewModel,
             )
         }
 
-        composable(HomeScreens.DetailsScreen.route) {
+        composable(
+            route = HomeScreens.DetailsScreen.route + "/{id}",
+            arguments = listOf(navArgument(name = "id") { type = NavType.StringType })
+        ) { backStackEntry  ->
             DetailsScreen(
-                //id = "",
+                id = backStackEntry.arguments?.getString("id"),
                 progressViewModel = progressViewModel,
-                favoriteViewModel = favoriteViewModel,
+                favoriteViewModel = favoriteViewModel
             )
         }
 
