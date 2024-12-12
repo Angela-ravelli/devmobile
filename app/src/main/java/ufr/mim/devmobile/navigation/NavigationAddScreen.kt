@@ -6,7 +6,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
-import ufr.mim.devmobile.viewmodel.ProgressViewModel
 import ufr.mim.devmobile.screens.AddDetailsScreen
 import ufr.mim.devmobile.screens.AddScreen
 import ufr.mim.devmobile.screens.DetailsScreen
@@ -14,7 +13,6 @@ import androidx.navigation.compose.rememberNavController
 
 @Composable
 fun NavigationAddScreen(
-    progressViewModel: ProgressViewModel,
     favoriteViewModel: FavoriteViewModel
 ) {
 
@@ -40,7 +38,6 @@ fun NavigationAddScreen(
 
         composable(AddScreens.AddDetailsScreen.route) {
             AddDetailsScreen(
-                progressViewModel,
                 onCancel = { navController.popBackStack() },
                 onSave = { navController.navigate(AddScreens.DetailsScreen.route) }
             )
@@ -52,7 +49,6 @@ fun NavigationAddScreen(
         ) { backStackEntry  ->
             DetailsScreen(
                 id = backStackEntry.arguments?.getString("id"),
-                progressViewModel = progressViewModel,
                 favoriteViewModel = favoriteViewModel
             )
         }

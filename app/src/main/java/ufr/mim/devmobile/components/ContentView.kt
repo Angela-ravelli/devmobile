@@ -15,7 +15,6 @@ import androidx.compose.ui.res.vectorResource
 import androidx.navigation.compose.rememberNavController
 import ufr.mim.devmobile.R
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
-import ufr.mim.devmobile.viewmodel.ProgressViewModel
 import ufr.mim.devmobile.viewmodel.UserViewModel
 import ufr.mim.devmobile.navigation.NavigationAddScreen
 import ufr.mim.devmobile.navigation.NavigationHomeScreen
@@ -24,7 +23,6 @@ import ufr.mim.devmobile.screens.StatsScreen
 
 @Composable
 fun ContentView(mainBar: Boolean,
-                progressViewModel: ProgressViewModel,
                 favoriteViewModel: FavoriteViewModel,
                 userViewModel: UserViewModel
                 ) {
@@ -64,21 +62,18 @@ fun ContentView(mainBar: Boolean,
             when (tabIndex) {
                 0 -> {
                     NavigationHomeScreen(
-                        progressViewModel,
                         favoriteViewModel,
                         userViewModel
                     )
                 }
                 1 -> {
                     NavigationAddScreen(
-                        progressViewModel,
                         favoriteViewModel
                     )
                 }
 
                 2 -> {
                     NavigationListScreen(
-                        progressViewModel,
                         favoriteViewModel
                     )
                 }

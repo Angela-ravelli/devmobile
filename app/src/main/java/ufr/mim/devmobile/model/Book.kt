@@ -10,7 +10,7 @@ data class Books(
     val genre: List<String>,
     val author: String,
     val plot: String,
-    val progression: Int,
+    var progression: Int,
     val pages: Int,
     val etiquette: List<String>,
     val editor: String,

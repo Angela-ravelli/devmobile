@@ -22,12 +22,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ufr.mim.devmobile.components.ProgressInput
 import ufr.mim.devmobile.components.fileSearcher
-import ufr.mim.devmobile.viewmodel.ProgressViewModel
+import ufr.mim.devmobile.mapper.BookRepository
 import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable
 fun AddDetailsScreen(
-    progressViewModel: ProgressViewModel,
     onCancel: () -> Unit,
     onSave: () -> Unit
 ) {
@@ -38,6 +37,7 @@ fun AddDetailsScreen(
     var releaseDate by remember { mutableStateOf("Date de sortie") }
     var publisher by remember { mutableStateOf("Editeur") }
     var pageCount by remember { mutableStateOf("Nombre de pages") }
+    var progression by remember { mutableStateOf("0") }
     var imageUri by remember { mutableStateOf<Uri?>(null) }
 
     LazyColumn(
@@ -112,15 +112,16 @@ fun AddDetailsScreen(
 
         // Progression
         item {
-            val progressPages by progressViewModel.progressPages.collectAsState()
-
             ProgressInput(
-                progressPages = progressPages.toString(),
+                progressPages = progression,
                 onValueChange = { pages ->
                     val pagesInt = pages.toIntOrNull() ?: 0
-                    progressViewModel.saveProgress(pagesInt)
+                    // Mise à jour de la progression du livre
+                    BookRepository.updateBookProgress(
+                        progression, pagesInt
+                    )
                 },
-                nbpages = pageCount
+                nbpages = pageCount.toInt()
             )
         }
 

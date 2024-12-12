@@ -10,22 +10,12 @@ import androidx.lifecycle.ViewModelProvider
 import ufr.mim.devmobile.components.ContentView
 import ufr.mim.devmobile.viewmodel.DataStoreManager
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
-import ufr.mim.devmobile.viewmodel.ProgressViewModel
 import ufr.mim.devmobile.viewmodel.UserViewModel
 import ufr.mim.devmobile.ui.theme.BookTheme
 
 class MainActivity : ComponentActivity() {
 
     private val dataStoreManager by lazy { DataStoreManager(applicationContext) }
-
-    // Initialisation des ViewModels
-    private val progressViewModel by viewModels<ProgressViewModel> {
-        object : ViewModelProvider.Factory {
-            override fun <T : ViewModel> create(modelClass: Class<T>): T {
-                return ProgressViewModel(dataStoreManager) as T
-            }
-        }
-    }
 
     private val favoriteViewModel by viewModels<FavoriteViewModel> {
         object : ViewModelProvider.Factory {
@@ -49,7 +39,6 @@ class MainActivity : ComponentActivity() {
         setContent {
             BookTheme {
                 ContentView(false,
-                    progressViewModel = progressViewModel,
                     favoriteViewModel = favoriteViewModel,
                     userViewModel = userViewModel
                 )

@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 fun ProgressInput(
     progressPages: String,
     onValueChange: (String) -> Unit,
-    nbpages: String
+    nbpages: Int
 ) {
     Column {
         Row(
@@ -45,9 +45,10 @@ fun ProgressInput(
 
             Text(text = " / $nbpages")
         }
-        val progress = progressPages.toFloatOrNull()?.coerceIn(0f, 100f)?.div(100f) ?: 0f
-        /* changer 100 par nombre de pages */
+        val progress = progressPages.toFloatOrNull()?.coerceIn(0f,
+            nbpages.toFloat())?.div(nbpages.toFloat()
+            ) ?: 0f
 
-        PercentageProgressBar(progress)
+        PercentageProgressBar(progress, nbpages)
     }
 }

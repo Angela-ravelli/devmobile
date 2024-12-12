@@ -26,14 +26,12 @@ import androidx.compose.ui.unit.dp
 import ufr.mim.devmobile.components.ProgressInput
 import ufr.mim.devmobile.mapper.BookRepository
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
-import ufr.mim.devmobile.viewmodel.ProgressViewModel
 import ufr.mim.devmobile.mapper.mapToMyImageResource
 import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable
 fun DetailsScreen(
     id: String?,
-    progressViewModel: ProgressViewModel,
     favoriteViewModel: FavoriteViewModel,
 ) {
     val isFav by favoriteViewModel.favoriteBooks.collectAsState()
@@ -143,15 +141,17 @@ fun DetailsScreen(
             }
         }
         item {
-            val progressPages by progressViewModel.progressPages.collectAsState()
 
             ProgressInput(
-                progressPages = progressPages.toString(),
+                progressPages = BookRepository.bookList[idd].progression.toString(),
                 onValueChange = { pages ->
                     val pagesInt = pages.toIntOrNull() ?: 0
-                    progressViewModel.saveProgress(pagesInt)
+                    // Mise à jour de la progression du livre
+                    BookRepository.updateBookProgress(
+                        BookRepository.bookList[idd].id.toString(), pagesInt
+                    )
                 },
-                nbpages = "Nombre de pages"
+                nbpages = BookRepository.bookList[idd].pages
             )
         }
     }

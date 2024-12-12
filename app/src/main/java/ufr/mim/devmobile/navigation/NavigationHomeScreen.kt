@@ -7,14 +7,13 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
-import ufr.mim.devmobile.viewmodel.ProgressViewModel
 import ufr.mim.devmobile.viewmodel.UserViewModel
 import ufr.mim.devmobile.screens.DetailsScreen
 import ufr.mim.devmobile.screens.HomeScreen
 import ufr.mim.devmobile.screens.LibrairyScreen
 
 @Composable
-fun NavigationHomeScreen(progressViewModel: ProgressViewModel,
+fun NavigationHomeScreen(
                          favoriteViewModel: FavoriteViewModel,
                          userViewModel: UserViewModel
 ) {
@@ -42,7 +41,6 @@ fun NavigationHomeScreen(progressViewModel: ProgressViewModel,
         ) { backStackEntry  ->
             DetailsScreen(
                 id = backStackEntry.arguments?.getString("id"),
-                progressViewModel = progressViewModel,
                 favoriteViewModel = favoriteViewModel
             )
         }

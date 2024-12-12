@@ -7,13 +7,12 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
-import ufr.mim.devmobile.viewmodel.ProgressViewModel
 import ufr.mim.devmobile.screens.DetailsScreen
 import ufr.mim.devmobile.screens.LibrairyScreen
 import ufr.mim.devmobile.screens.ListScreen
 
 @Composable
-fun NavigationListScreen(progressViewModel: ProgressViewModel, favoriteViewModel: FavoriteViewModel) {
+fun NavigationListScreen(favoriteViewModel: FavoriteViewModel) {
     val navController = rememberNavController()
 
     NavHost(
@@ -37,7 +36,6 @@ fun NavigationListScreen(progressViewModel: ProgressViewModel, favoriteViewModel
         ) { backStackEntry ->
             DetailsScreen(
                 id = backStackEntry.arguments?.getString("id"),
-                progressViewModel = progressViewModel,
                 favoriteViewModel = favoriteViewModel
             )
         }

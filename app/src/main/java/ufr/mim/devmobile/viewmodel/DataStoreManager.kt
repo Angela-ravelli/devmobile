@@ -8,6 +8,7 @@ import androidx.datastore.preferences.preferencesDataStore
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import androidx.datastore.preferences.core.stringSetPreferencesKey
+import ufr.mim.devmobile.model.Books
 
 // Extension DataStore
 val Context.dataStore by preferencesDataStore("user_preferences")
@@ -17,9 +18,7 @@ class DataStoreManager(private val context: Context) {
     companion object {
         // Clés des préférences
         private val FAVORITES_KEY = stringSetPreferencesKey("favorite_books")
-        private val PROGRESS_KEY = intPreferencesKey("reading_progress")
         val USER_NAME = stringPreferencesKey("user_name")
-        //private val BOOK_KEY = stringSetPreferencesKey("all_books")
     }
 
     // *** Gestion des Favoris ***
@@ -43,21 +42,6 @@ class DataStoreManager(private val context: Context) {
         }
     }
 
-    // *** Gestion de la Progression ***
-
-    // Charger la progression actuelle
-    val readingProgress: Flow<Int> = context.dataStore.data
-        .map { preferences ->
-            preferences[PROGRESS_KEY] ?: 0
-        }
-
-    // Sauvegarder la progression
-    suspend fun saveProgress(pages: Int) {
-        context.dataStore.edit { preferences ->
-            preferences[PROGRESS_KEY] = pages
-        }
-    }
-
     // *** Gestion du prénom ***
 
     val userName: Flow<String?> = context.dataStore.data
@@ -68,12 +52,4 @@ class DataStoreManager(private val context: Context) {
             preferences[USER_NAME] = name
         }
     }
-
-    // *** Gestion des livres ***
-
-    // Charger la liste des livres
-    /*val allBooks: Flow<Set<Books>> = context.dataStore.data
-        .map { preferences ->
-            preferences[BOOK_KEY] ?: emptySet()
-        }*/
 }
