@@ -151,7 +151,7 @@ fun DetailsScreen(
                     val pagesInt = pages.toIntOrNull() ?: 0
                     progressViewModel.saveProgress(pagesInt)
                 },
-                nbpages = "Nombre de pages"
+                nbpages = BookRepository.bookList[idd].pages.toString()
             )
         }
     }
