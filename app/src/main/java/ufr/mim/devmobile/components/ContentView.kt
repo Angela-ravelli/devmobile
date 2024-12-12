@@ -1,5 +1,6 @@
 package ufr.mim.devmobile.components
 
+import NavigationViewModel
 import androidx.compose.animation.Crossfade
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.padding
@@ -48,10 +49,23 @@ fun ContentView(mainBar: Boolean,
     )
 
     val addScreenNavController = rememberNavController()
+    val navigationViewModel = remember { NavigationViewModel() } // Instance du ViewModel partagé
 
+
+    val homeNavController = rememberNavController()
+    val addNavController = rememberNavController()
+    val listNavController = rememberNavController()
+
+    // Obtenir le bon NavController actif
+    val currentNavController = when (selectedTab) {
+        0 -> homeNavController
+        1 -> addNavController
+        2 -> listNavController
+        else -> homeNavController // Par défaut, ou un autre si nécessaire
+    }
 
     Scaffold(
-        topBar = { MyTopBar(mainBar, addScreenNavController) },
+        topBar = { MyTopBar(mainBar, currentNavController, navigationViewModel) },
         bottomBar = { BottomBar(selectedTab, icons) }
     ) { paddingValues ->
         // Section centrale change en fonction de l'onglet
@@ -66,20 +80,23 @@ fun ContentView(mainBar: Boolean,
                     NavigationHomeScreen(
                         progressViewModel,
                         favoriteViewModel,
-                        userViewModel
+                        userViewModel,
+                        navigationViewModel
                     )
                 }
                 1 -> {
                     NavigationAddScreen(
                         progressViewModel,
-                        favoriteViewModel
+                        favoriteViewModel,
+                        navigationViewModel
                     )
                 }
 
                 2 -> {
                     NavigationListScreen(
                         progressViewModel,
-                        favoriteViewModel
+                        favoriteViewModel,
+                        navigationViewModel
                     )
                 }
                 3 -> {

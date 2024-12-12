@@ -1,9 +1,13 @@
 package ufr.mim.devmobile.navigation
 
+import NavigationViewModel
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 import ufr.mim.devmobile.viewmodel.ProgressViewModel
@@ -15,10 +19,17 @@ import androidx.navigation.compose.rememberNavController
 @Composable
 fun NavigationAddScreen(
     progressViewModel: ProgressViewModel,
-    favoriteViewModel: FavoriteViewModel
+    favoriteViewModel: FavoriteViewModel,
+    navigationViewModel: NavigationViewModel
 ) {
 
     val navController = rememberNavController()
+
+    val currentBackStackEntry by navController.currentBackStackEntryAsState()
+    LaunchedEffect(currentBackStackEntry) {
+        val isInDepth = currentBackStackEntry?.destination?.route != AddScreens.AddScreen.route
+        navigationViewModel.setInDepthNavigation(isInDepth)
+    }
 
     NavHost(
         navController = navController,
