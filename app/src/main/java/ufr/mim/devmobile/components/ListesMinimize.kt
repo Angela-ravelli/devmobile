@@ -49,9 +49,7 @@ fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
                 ),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            val nb = if(nameList.listChoice().size < 6) nameList.listChoice().size else 6
-
-            items(nb) { index ->
+            items(6) { index ->
                 val startPadding = if(index == 0) MainPadding else 0.dp
                 Image(
                     painter = painterResource(id = nameList.listChoice()[index].image.mapToMyImageResource()),
@@ -60,7 +58,6 @@ fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
                         .fillMaxHeight()
                         .padding(start = startPadding, end = MainPadding)
                         .clickable {
-                            Log.d("ID Liste ", nameList.listChoice()[index].id.toString())
                             onViewDetails(nameList.listChoice()[index].id.toString()) }
                 )
             }

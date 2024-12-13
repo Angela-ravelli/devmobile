@@ -68,13 +68,15 @@ fun NavigationAddScreen(
             route = AddScreens.LibrairyScreen.route + "/{nameList}",
             arguments = listOf(navArgument(name = "nameList") { type = NavType.StringType })
         ){ backStackEntry ->
-            LibrairyScreen(
-                nameList = backStackEntry.arguments?.getString("nameList"),
-                onViewDetails = { id ->
-                    navController.navigate(AddScreens.DetailsScreen.route + "/$id")
-                },
-                favoriteViewModel = favoriteViewModel,
-            )
+            backStackEntry.arguments?.getString("nameList")?.let {
+                LibrairyScreen(
+                    nameList = it,
+                    onViewDetails = { id ->
+                        navController.navigate(AddScreens.DetailsScreen.route + "/$id")
+                    },
+                    favoriteViewModel = favoriteViewModel,
+                )
+            }
         }
     }
 
