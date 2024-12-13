@@ -49,7 +49,7 @@ fun DetailsScreen(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = BookRepository.bookList[idd].title,
+                    text = BookRepository.bibliotheque[idd].title,
                     style = MaterialTheme.typography.headlineLarge,
                     modifier = Modifier.weight(1f)
                 )
@@ -82,12 +82,12 @@ fun DetailsScreen(
         }
         item {
             Text(
-                text = "Auteur : "+ BookRepository.bookList[idd].author
+                text = "Auteur : "+ BookRepository.bibliotheque[idd].author
             )
         }
         item {
             Image(
-                painter = painterResource(id = BookRepository.bookList[idd].image.mapToMyImageResource()),
+                painter = painterResource(id = BookRepository.bibliotheque[idd].image.mapToMyImageResource()),
                     contentDescription = "Couverture",
                     modifier = Modifier
                         .size(500.dp)
@@ -95,33 +95,33 @@ fun DetailsScreen(
         }
         item {
             Text(
-                text = "Résumé : "+ BookRepository.bookList[idd].plot
+                text = "Résumé : "+ BookRepository.bibliotheque[idd].plot
             )
         }
         item {
             Text(
-                text = "Genre : "+ BookRepository.bookList[idd].genre.toString()
+                text = "Genre : "+ BookRepository.bibliotheque[idd].genre.toString()
             )
         }
         item {
             Text(
-                text = "Année de sortie : "+ BookRepository.bookList[idd].year.toString()
+                text = "Année de sortie : "+ BookRepository.bibliotheque[idd].year.toString()
             )
         }
         item {
             Text(
-                text = "Editeur : "+ BookRepository.bookList[idd].editor
+                text = "Editeur : "+ BookRepository.bibliotheque[idd].editor
             )
         }
         item {
             Text(
-                text = "Nombre de pages : "+ BookRepository.bookList[idd].pages.toString()
+                text = "Nombre de pages : "+ BookRepository.bibliotheque[idd].pages.toString()
             )
         }
         item {
             Row {
                 Text(
-                    text = "Etiquette : "+ BookRepository.bookList[idd].etiquette.toString()
+                    text = "Etiquette : "+ BookRepository.bibliotheque[idd].etiquette.toString()
                 )
                 Card {  }
             }
@@ -129,15 +129,15 @@ fun DetailsScreen(
         item {
 
             ProgressInput(
-                progressPages = BookRepository.bookList[idd].progression.toString(),
+                progressPages = BookRepository.bibliotheque[idd].progression.toString(),
                 onValueChange = { pages ->
                     val pagesInt = pages.toIntOrNull() ?: 0
                     // Mise à jour de la progression du livre
                     BookRepository.updateBookProgress(
-                        BookRepository.bookList[idd].id.toString(), pagesInt
+                        BookRepository.bibliotheque[idd].id.toString(), pagesInt
                     )
                 },
-                nbpages = BookRepository.bookList[idd].pages.toString()
+                nbpages = BookRepository.bibliotheque[idd].pages.toString()
             )
         }
     }

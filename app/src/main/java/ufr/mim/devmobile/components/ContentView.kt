@@ -25,7 +25,8 @@ import ufr.mim.devmobile.viewmodel.NavigationViewModel
 @Composable
 fun ContentView(
                 favoriteViewModel: FavoriteViewModel,
-                userViewModel: UserViewModel
+                userViewModel: UserViewModel,
+                navigationViewModel: NavigationViewModel
 ) {
 
     var selectedTab by remember { mutableIntStateOf(0) }
@@ -47,15 +48,15 @@ fun ContentView(
     )
 
     val addScreenNavController = rememberNavController()
-    val navigationViewModel = remember { NavigationViewModel() } // Instance du ViewModel partagé
-
 
     val homeNavController = rememberNavController()
     val addNavController = rememberNavController()
     val listNavController = rememberNavController()
 
+   // val navigationViewModel = remember { NavigationViewModel(currentNavController) } // Instance du ViewModel partagé
+
     // Obtenir le bon NavController actif
-    val currentNavController = when (selectedTab) {
+    navigationViewModel.navController = when (selectedTab) {
         0 -> homeNavController
         1 -> addNavController
         2 -> listNavController
@@ -63,7 +64,7 @@ fun ContentView(
     }
 
     Scaffold(
-        topBar = { MyTopBar(currentNavController, navigationViewModel) },
+        topBar = { MyTopBar(navigationViewModel.navController!!, navigationViewModel) },
         bottomBar = { BottomBar(selectedTab, icons) }
     ) { paddingValues ->
         // Section centrale change en fonction de l'onglet

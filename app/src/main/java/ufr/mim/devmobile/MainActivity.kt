@@ -42,6 +42,7 @@ class MainActivity : ComponentActivity() {
                 ContentView(
                     favoriteViewModel = favoriteViewModel,
                     userViewModel = userViewModel,
+                    navigationViewModel = NavigationViewModel()
                 )
             }
         }

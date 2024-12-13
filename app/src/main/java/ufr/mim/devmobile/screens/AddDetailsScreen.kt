@@ -144,8 +144,8 @@ fun AddDetailsScreen(
 
                 Button(
                     onClick = {
-                        BookRepository.bookList.add(Books(
-                            BookRepository.bookList.last().id+1,
+                        BookRepository.bibliotheque.add(Books(
+                            BookRepository.bibliotheque.last().id+1,
                             bookTitle,
                             releaseDate.toInt(),
                             genre.split(","),

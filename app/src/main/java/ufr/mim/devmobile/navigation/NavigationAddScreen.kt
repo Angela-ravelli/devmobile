@@ -22,66 +22,69 @@ fun NavigationAddScreen(
     navigationViewModel: NavigationViewModel
 ) {
 
-    val navController = rememberNavController()
+    //val navController = rememberNavController()
+    val navController = navigationViewModel.navController
 
-    val currentBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentBackStackEntry by navController!!.currentBackStackEntryAsState()
     LaunchedEffect(currentBackStackEntry) {
         val isInDepth = currentBackStackEntry?.destination?.route != AddScreens.AddScreen.route
         navigationViewModel.setInDepthNavigation(isInDepth)
     }
 
-    NavHost(
-        navController = navController,
-        startDestination = AddScreens.AddScreen.route
-    ) {
-        composable(AddScreens.AddScreen.route) {
-            AddScreen(
-                onDetails = {
-                    navController.navigate(AddScreens.AddDetailsScreen.route )
-                },
-                onViewDetails = { id ->
-                    navController.navigate(AddScreens.DetailsScreen.route+ "/$id")
-                },
-                onListDetails = { nameList ->
-                    navController.navigate(AddScreens.LibrairyScreen.route+ "/$nameList")
-                },
-                favoriteViewModel = favoriteViewModel
-            )
-        }
-
-        composable(AddScreens.AddDetailsScreen.route) {
-            AddDetailsScreen(
-                onCancel = { navController.popBackStack()},
-                onAdd = {
-                    navController.navigate(AddScreens.AddScreen.route )
-                },
-            )
-        }
-
-        composable(
-            route = AddScreens.DetailsScreen.route + "/{id}",
-            arguments = listOf(navArgument(name = "id") { type = NavType.StringType })
-        ) { backStackEntry  ->
-            backStackEntry.arguments?.getString("id")?.let {
-                DetailsScreen(
-                    id = it,
+    if (navController != null) {
+        NavHost(
+            navController = navController,
+            startDestination = AddScreens.AddScreen.route
+        ) {
+            composable(AddScreens.AddScreen.route) {
+                AddScreen(
+                    onDetails = {
+                        navController.navigate(AddScreens.AddDetailsScreen.route )
+                    },
+                    onViewDetails = { id ->
+                        navController.navigate(AddScreens.DetailsScreen.route+ "/$id")
+                    },
+                    onListDetails = { nameList ->
+                        navController.navigate(AddScreens.LibrairyScreen.route+ "/$nameList")
+                    },
                     favoriteViewModel = favoriteViewModel
                 )
             }
-        }
 
-        composable(
-            route = AddScreens.LibrairyScreen.route + "/{nameList}",
-            arguments = listOf(navArgument(name = "nameList") { type = NavType.StringType })
-        ){ backStackEntry ->
-            backStackEntry.arguments?.getString("nameList")?.let {
-                LibrairyScreen(
-                    nameList = it,
-                    onViewDetails = { id ->
-                        navController.navigate(AddScreens.DetailsScreen.route + "/$id")
+            composable(AddScreens.AddDetailsScreen.route) {
+                AddDetailsScreen(
+                    onCancel = { navController.popBackStack()},
+                    onAdd = {
+                        navController.navigate(AddScreens.AddScreen.route )
                     },
-                    favoriteViewModel = favoriteViewModel,
                 )
+            }
+
+            composable(
+                route = AddScreens.DetailsScreen.route + "/{id}",
+                arguments = listOf(navArgument(name = "id") { type = NavType.StringType })
+            ) { backStackEntry  ->
+                backStackEntry.arguments?.getString("id")?.let {
+                    DetailsScreen(
+                        id = it,
+                        favoriteViewModel = favoriteViewModel
+                    )
+                }
+            }
+
+            composable(
+                route = AddScreens.LibrairyScreen.route + "/{nameList}",
+                arguments = listOf(navArgument(name = "nameList") { type = NavType.StringType })
+            ){ backStackEntry ->
+                backStackEntry.arguments?.getString("nameList")?.let {
+                    LibrairyScreen(
+                        nameList = it,
+                        onViewDetails = { id ->
+                            navController.navigate(AddScreens.DetailsScreen.route + "/$id")
+                        },
+                        favoriteViewModel = favoriteViewModel,
+                    )
+                }
             }
         }
     }
