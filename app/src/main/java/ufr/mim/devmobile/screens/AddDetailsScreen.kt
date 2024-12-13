@@ -28,7 +28,7 @@ import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable
 fun AddDetailsScreen(
-    onCancel: () -> Unit,
+    onCancel: () -> Unit, onAdd: () -> Unit
 ) {
     var bookTitle by remember { mutableStateOf("Titre du livre") }
     var author by remember { mutableStateOf("Auteur") }
@@ -156,7 +156,8 @@ fun AddDetailsScreen(
                             emptyList(),
                             publisher,
                             ""
-                        ))
+                        ));
+                        onAdd()
                     },
                     colors = ButtonDefaults.buttonColors(
                         containerColor = MaterialTheme.colorScheme.onSurface
