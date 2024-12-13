@@ -51,7 +51,10 @@ fun NavigationAddScreen(
 
         composable(AddScreens.AddDetailsScreen.route) {
             AddDetailsScreen(
-                onCancel = { navController.popBackStack() },
+                onCancel = { navController.popBackStack()},
+                onAdd = {
+                    navController.navigate(AddScreens.AddScreen.route )
+                },
             )
         }
 
