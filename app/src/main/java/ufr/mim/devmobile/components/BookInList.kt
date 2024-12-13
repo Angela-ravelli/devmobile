@@ -11,7 +11,6 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -71,6 +70,8 @@ fun BookInList(book: Books,
         val nbpagesFloat = book.pages.toString().toFloatOrNull() ?: 1f
         val progress = book.progression.toString()
             .toFloatOrNull()?.coerceIn(0f, nbpagesFloat)?.div(nbpagesFloat) ?: 0f
+
+
 
         PercentageProgressBar(
             progress,
