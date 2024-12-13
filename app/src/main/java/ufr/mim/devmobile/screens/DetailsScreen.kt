@@ -24,6 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import ufr.mim.devmobile.components.ProgressInput
+import ufr.mim.devmobile.data.DataList
 import ufr.mim.devmobile.mapper.BookRepository
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 import ufr.mim.devmobile.mapper.mapToMyImageResource
@@ -31,14 +32,12 @@ import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable
 fun DetailsScreen(
-    id: String?,
+    id: String,
     favoriteViewModel: FavoriteViewModel,
 ) {
     val isFav by favoriteViewModel.favoriteBooks.collectAsState()
-    if (id != null) {
-        Log.d("ID : ", id)
-    }
-    val idd = (id?.toInt() ?: 0) -1
+
+    val idd = id.toInt() -1
     
     LazyColumn(
         modifier = Modifier.padding(MainPadding),
@@ -49,27 +48,30 @@ fun DetailsScreen(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                if (id != null) {
-                    Text(
-                        text = BookRepository.bookList[idd].title,
-                        style = MaterialTheme.typography.headlineLarge,
-                        modifier = Modifier.weight(1f)
-                    )
-                }
+                Text(
+                    text = BookRepository.bookList[idd].title,
+                    style = MaterialTheme.typography.headlineLarge,
+                    modifier = Modifier.weight(1f)
+                )
 
                 IconButton(
                     onClick = {
-                        favoriteViewModel.toggleFavorite(id.toString())
+                        if (isFav.contains(id)) {
+                            DataList.listFavoris.remove(id.toInt())
+                        } else {
+                            DataList.listFavoris.add(id.toInt())
+                        }
+                        favoriteViewModel.toggleFavorite(id)
                     }
                 ) {
                     Icon(
                         imageVector =
-                        if (isFav.contains(id.toString()))
+                        if (isFav.contains(id))
                             Icons.Filled.Favorite
                         else
                             Icons.Outlined.FavoriteBorder,
                         contentDescription =
-                        if (isFav.contains(id.toString()))
+                        if (isFav.contains(id))
                             "Supprimer des favoris"
                         else
                             "Ajouter aux favoris",
@@ -79,64 +81,48 @@ fun DetailsScreen(
             }
         }
         item {
-            if (id != null) {
-                Text(
-                    text = "Auteur : "+ BookRepository.bookList[idd].author
-                )
-            }
+            Text(
+                text = "Auteur : "+ BookRepository.bookList[idd].author
+            )
         }
         item {
-            if (id != null) {
-                Image(
-                    painter = painterResource(id = BookRepository.bookList[idd].image.mapToMyImageResource()),
-                        contentDescription = "Couverture",
-                        modifier = Modifier
-                            .size(500.dp)
-                    )
-            }
+            Image(
+                painter = painterResource(id = BookRepository.bookList[idd].image.mapToMyImageResource()),
+                    contentDescription = "Couverture",
+                    modifier = Modifier
+                        .size(500.dp)
+                )
         }
         item {
-            if (id != null) {
-                Text(
-                    text = "Résumé : "+ BookRepository.bookList[idd].plot
-                )
-            }
+            Text(
+                text = "Résumé : "+ BookRepository.bookList[idd].plot
+            )
         }
         item {
-            if (id != null) {
-                Text(
-                    text = "Genre : "+ BookRepository.bookList[idd].genre.toString()
-                )
-            }
+            Text(
+                text = "Genre : "+ BookRepository.bookList[idd].genre.toString()
+            )
         }
         item {
-            if (id != null) {
-                Text(
-                    text = "Année de sortie : "+ BookRepository.bookList[idd].year.toString()
-                )
-            }
+            Text(
+                text = "Année de sortie : "+ BookRepository.bookList[idd].year.toString()
+            )
         }
         item {
-            if (id != null) {
-                Text(
-                    text = "Editeur : "+ BookRepository.bookList[idd].editor
-                )
-            }
+            Text(
+                text = "Editeur : "+ BookRepository.bookList[idd].editor
+            )
         }
         item {
-            if (id != null) {
-                Text(
-                    text = "Nombre de pages : "+ BookRepository.bookList[idd].pages.toString()
-                )
-            }
+            Text(
+                text = "Nombre de pages : "+ BookRepository.bookList[idd].pages.toString()
+            )
         }
         item {
             Row {
-                if (id != null) {
-                    Text(
-                        text = "Etiquette : "+ BookRepository.bookList[idd].etiquette.toString()
-                    )
-                }
+                Text(
+                    text = "Etiquette : "+ BookRepository.bookList[idd].etiquette.toString()
+                )
                 Card {  }
             }
         }
