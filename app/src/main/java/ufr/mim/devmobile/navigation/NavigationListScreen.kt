@@ -54,13 +54,15 @@ fun NavigationListScreen(favoriteViewModel: FavoriteViewModel, navigationViewMod
             route = ListScreens.LibrairyScreen.route + "/{nameList}",
             arguments = listOf(navArgument(name = "nameList") { type = NavType.StringType })
         ){ backStackEntry ->
-            LibrairyScreen(
-                nameList = backStackEntry.arguments?.getString("nameList"),
-                onViewDetails = { id ->
-                    navController.navigate(ListScreens.DetailsScreen.route + "/$id")
-                },
-                favoriteViewModel = favoriteViewModel,
-            )
+            backStackEntry.arguments?.getString("nameList")?.let {
+                LibrairyScreen(
+                    nameList = it,
+                    onViewDetails = { id ->
+                        navController.navigate(ListScreens.DetailsScreen.route + "/$id")
+                    },
+                    favoriteViewModel = favoriteViewModel,
+                )
+            }
         }
     }
 }
