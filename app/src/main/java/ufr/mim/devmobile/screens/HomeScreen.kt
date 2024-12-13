@@ -133,7 +133,7 @@ fun HomeScreen(
             )
         }
 
-        if (searchResults.isEmpty()) {
+        if (searchValue.text.isNotEmpty()) {
             items(searchResults) { book ->
                 BookInList(
                     book = book,
@@ -149,11 +149,6 @@ fun HomeScreen(
             item { ListesMinimize("Livres en cours", onViewDetails, onListDetails, favoriteViewModel) }
             item { ListesMinimize("Livres en attente", onViewDetails, onListDetails, favoriteViewModel) }
         }
-        /*// Cartes de statistiques et listes
-        item { StatsHomeCard() }
-        item { ListesMinimize("Ma bibliothèque", onViewDetails, onListDetails, favoriteViewModel) }
-        item { ListesMinimize("Livres en cours", onViewDetails, onListDetails, favoriteViewModel) }
-        item { ListesMinimize("Livres en attente", onViewDetails, onListDetails, favoriteViewModel) }*/
     }
 }
 

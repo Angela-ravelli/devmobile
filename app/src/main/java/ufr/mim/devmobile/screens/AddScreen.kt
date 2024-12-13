@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonColors
@@ -22,9 +23,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import ufr.mim.devmobile.components.BookInList
 import ufr.mim.devmobile.components.BookSearchBar
 import ufr.mim.devmobile.components.ListesMinimize
+import ufr.mim.devmobile.components.StatsHomeCard
 import ufr.mim.devmobile.components.dropShadow
+import ufr.mim.devmobile.mapper.BookRepository
 import ufr.mim.devmobile.ui.theme.MainPadding
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 
@@ -32,6 +36,12 @@ import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 @Composable
 fun AddScreen(onDetails: (String) -> Unit, onViewDetails: (String) -> Unit,
               onListDetails: (String) -> Unit, favoriteViewModel: FavoriteViewModel) {
+
+    var searchValue by remember { mutableStateOf(TextFieldValue("")) }
+    val searchResults = BookRepository.bookList.filter { book ->
+        book.title.contains(searchValue.text, ignoreCase = true)
+    }
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -45,8 +55,6 @@ fun AddScreen(onDetails: (String) -> Unit, onViewDetails: (String) -> Unit,
                 modifier = Modifier.padding(bottom = MainPadding),
                 verticalAlignment = Alignment.CenterVertically
             ) {
-                var searchValue by remember { mutableStateOf(TextFieldValue("")) }
-
                 Box(modifier = Modifier.weight(1f)) {
                     BookSearchBar(
                         text = "Rechercher un livre..",
@@ -79,11 +87,23 @@ fun AddScreen(onDetails: (String) -> Unit, onViewDetails: (String) -> Unit,
             }
         }
 
-        // Listes par genres
-        item { ListesMinimize("Suggestions", onViewDetails, onListDetails, favoriteViewModel) }
-        item { ListesMinimize("Romance", onViewDetails, onListDetails, favoriteViewModel) }
-        item { ListesMinimize("Science-fiction", onViewDetails, onListDetails, favoriteViewModel) }
-        item { ListesMinimize("Policier", onViewDetails, onListDetails, favoriteViewModel) }
+        if (searchValue.text.isNotEmpty()) {
+            items(searchResults) { book ->
+                BookInList(
+                    book = book,
+                    favoriteViewModel = favoriteViewModel,
+                    nameList = "Recherche",
+                    onViewDetails = onViewDetails
+                )
+            }
+        } else {
+            // Listes par genres
+            item { ListesMinimize("Suggestions", onViewDetails, onListDetails, favoriteViewModel) }
+            item { ListesMinimize("Romance", onViewDetails, onListDetails, favoriteViewModel) }
+            item { ListesMinimize("Science-fiction", onViewDetails, onListDetails, favoriteViewModel) }
+            item { ListesMinimize("Policier", onViewDetails, onListDetails, favoriteViewModel) }
+        }
+
     }
 }
 
