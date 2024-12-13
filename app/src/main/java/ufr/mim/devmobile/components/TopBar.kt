@@ -37,7 +37,7 @@ fun MyTopBar(
         modifier = Modifier.height(80.dp),
         title = {
             Row(verticalAlignment = Alignment.CenterVertically) {
-                if (isInDepthNavigation == true) {
+                if (isInDepthNavigation) {
                     IconButton(onClick = { navController.popBackStack() }
                     ) {
                         Icon(

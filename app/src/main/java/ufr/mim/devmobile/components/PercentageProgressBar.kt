@@ -20,7 +20,7 @@ import ufr.mim.devmobile.ui.theme.MainPadding
 
 
 @Composable
-fun PercentageProgressBar(progress: Float, nbpages: Float, big: Boolean) {
+fun PercentageProgressBar(progress: Float, big: Boolean) {
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
@@ -70,7 +70,7 @@ fun PercentageProgressBar(progress: Float, nbpages: Float, big: Boolean) {
         Spacer(modifier = Modifier.width(8.dp))
 
         Text(
-            text = "${(progress * nbpages).toInt()}%",
+            text = "${(progress * 100).toInt()}%",
             style = MaterialTheme.typography.bodyLarge
         )
     }

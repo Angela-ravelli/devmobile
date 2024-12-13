@@ -23,7 +23,7 @@ import ufr.mim.devmobile.screens.StatsScreen
 import ufr.mim.devmobile.viewmodel.NavigationViewModel
 
 @Composable
-fun ContentView(mainBar: Boolean,
+fun ContentView(
                 favoriteViewModel: FavoriteViewModel,
                 userViewModel: UserViewModel
 ) {

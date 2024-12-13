@@ -68,9 +68,12 @@ fun BookInList(book: Books,
             overflow = TextOverflow.Ellipsis
         )
 
+        val nbpagesFloat = book.pages.toString().toFloatOrNull() ?: 1f
+        val progress = book.progression.toString()
+            .toFloatOrNull()?.coerceIn(0f, nbpagesFloat)?.div(nbpagesFloat) ?: 0f
+
         PercentageProgressBar(
-            0.toFloat(),
-            nbpages = book.pages.toFloat(),
+            progress,
             big = false
         )
     }

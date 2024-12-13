@@ -39,7 +39,7 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BookTheme {
-                ContentView(false,
+                ContentView(
                     favoriteViewModel = favoriteViewModel,
                     userViewModel = userViewModel,
                 )

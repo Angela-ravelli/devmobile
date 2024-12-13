@@ -38,7 +38,7 @@ fun LibrairyScreen(nameList: String?,
                 Box(
                     modifier = Modifier
                         .weight(1f)
-                        .height(260.dp)
+                        .height(300.dp)
                 ) {
                     BookInList(
                         book = books[firstIndex],
@@ -53,7 +53,7 @@ fun LibrairyScreen(nameList: String?,
                     Box(
                         modifier = Modifier
                             .weight(1f)
-                            .height(260.dp)
+                            .height(300.dp)
                     ) {
                         BookInList(
                             book = books[firstIndex + 1],
