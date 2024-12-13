@@ -50,10 +50,12 @@ fun NavigationHomeScreen(
             route = HomeScreens.DetailsScreen.route + "/{id}",
             arguments = listOf(navArgument(name = "id") { type = NavType.StringType })
         ) { backStackEntry  ->
-            DetailsScreen(
-                id = backStackEntry.arguments?.getString("id"),
-                favoriteViewModel = favoriteViewModel
-            )
+            backStackEntry.arguments?.getString("id")?.let {
+                DetailsScreen(
+                    id = it,
+                    favoriteViewModel = favoriteViewModel
+                )
+            }
         }
 
         composable(
