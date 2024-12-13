@@ -42,7 +42,8 @@ fun NavigationHomeScreen(
                 onListDetails = { nameList ->
                     navController.navigate(HomeScreens.LibrairyScreen.route + "/$nameList")
                 },
-                userViewModel = userViewModel
+                userViewModel = userViewModel,
+                favoriteViewModel = favoriteViewModel
             )
         }
 

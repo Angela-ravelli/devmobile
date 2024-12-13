@@ -36,7 +36,8 @@ fun NavigationListScreen(favoriteViewModel: FavoriteViewModel, navigationViewMod
                 },
                 onListDetails = { nameList ->
                     navController.navigate(ListScreens.LibrairyScreen.route + "/$nameList")
-                }
+                },
+                favoriteViewModel = favoriteViewModel
             )
         }
 

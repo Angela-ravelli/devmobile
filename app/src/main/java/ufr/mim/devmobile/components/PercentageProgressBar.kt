@@ -31,8 +31,6 @@ fun PercentageProgressBar(progress: Float, big: Boolean) {
                 else
                     Modifier.size(120.dp)
             )
-
-            .padding(top = MainPadding)
     ) {
         Box(
             modifier = Modifier

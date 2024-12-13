@@ -13,6 +13,8 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
@@ -22,10 +24,12 @@ import ufr.mim.devmobile.data.DataList
 import ufr.mim.devmobile.mapper.mapToMyImageResource
 import ufr.mim.devmobile.model.Books
 import ufr.mim.devmobile.ui.theme.MainPadding
+import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 
 @Composable
 fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
-                   onListDetails: (String) -> Unit) {
+                   onListDetails: (String) -> Unit, favoriteViewModel: FavoriteViewModel) {
+    val favorites by favoriteViewModel.favoriteBooks.collectAsState()
 
     // Affiche le nom de la liste
     Column (
@@ -49,18 +53,20 @@ fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
                 ),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            val nb = if(nameList.listChoice().size < 6) nameList.listChoice().size else 6
+            val i : Int
+            if(nameList.listChoice(favorites).size>=6){ i = 6 }
+            else { i = nameList.listChoice(favorites).size }
 
-            items(nb) { index ->
+            items(i) { index ->
                 val startPadding = if(index == 0) MainPadding else 0.dp
                 Image(
-                    painter = painterResource(id = nameList.listChoice()[index].image.mapToMyImageResource()),
-                    contentDescription = nameList.listChoice()[index].image,
+                    painter = painterResource(id = nameList.listChoice(favorites)[index].image.mapToMyImageResource()),
+                    contentDescription = nameList.listChoice(favorites)[index].image,
                     modifier = Modifier
                         .fillMaxHeight()
                         .padding(start = startPadding, end = MainPadding)
                         .clickable {
-                            onViewDetails(nameList.listChoice()[index].id.toString()) }
+                            onViewDetails(nameList.listChoice(favorites)[index].id.toString()) }
                 )
             }
 
@@ -71,7 +77,9 @@ fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
     }
 }
 
-fun String.listChoice() : MutableList<Books> {
+fun String.listChoice(favorites: Set<String>) : MutableList<Books> {
+    val fav: MutableList<Int> = favorites.mapNotNull { it.toIntOrNull() }.toMutableList()
+
     var listReturn = mutableListOf<Books>()
     var listInt = mutableListOf<Int>()
     when (this) {
@@ -82,7 +90,7 @@ fun String.listChoice() : MutableList<Books> {
         "Romance" -> { listInt = DataList.romance }
         "Science-fiction" -> { listInt = DataList.science }
         "Policier" -> { listInt = DataList.policier }
-        "Livres Favoris" -> { listInt = DataList.listFavoris }
+        "Livres Favoris" -> { listInt = fav }
         "Livres à acheter" -> { listInt = DataList.listAcheter }
         "Livres déjà lus" -> { listInt = DataList.listLu }
         else -> { listReturn = BookRepository.bookList }

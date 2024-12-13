@@ -44,7 +44,8 @@ fun NavigationAddScreen(
                 },
                 onListDetails = { nameList ->
                     navController.navigate(AddScreens.LibrairyScreen.route+ "/$nameList")
-                }
+                },
+                favoriteViewModel = favoriteViewModel
             )
         }
 

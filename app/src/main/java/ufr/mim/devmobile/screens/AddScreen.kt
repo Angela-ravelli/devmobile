@@ -26,10 +26,12 @@ import ufr.mim.devmobile.components.BookSearchBar
 import ufr.mim.devmobile.components.ListesMinimize
 import ufr.mim.devmobile.components.dropShadow
 import ufr.mim.devmobile.ui.theme.MainPadding
+import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 
 
 @Composable
-fun AddScreen(onDetails: (String) -> Unit, onViewDetails: (String) -> Unit, onListDetails: (String) -> Unit) {
+fun AddScreen(onDetails: (String) -> Unit, onViewDetails: (String) -> Unit,
+              onListDetails: (String) -> Unit, favoriteViewModel: FavoriteViewModel) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -78,10 +80,10 @@ fun AddScreen(onDetails: (String) -> Unit, onViewDetails: (String) -> Unit, onLi
         }
 
         // Listes par genres
-        item { ListesMinimize("Suggestions", onViewDetails, onListDetails) }
-        item { ListesMinimize("Romance", onViewDetails, onListDetails) }
-        item { ListesMinimize("Science-fiction", onViewDetails, onListDetails) }
-        item { ListesMinimize("Policier", onViewDetails, onListDetails) }
+        item { ListesMinimize("Suggestions", onViewDetails, onListDetails, favoriteViewModel) }
+        item { ListesMinimize("Romance", onViewDetails, onListDetails, favoriteViewModel) }
+        item { ListesMinimize("Science-fiction", onViewDetails, onListDetails, favoriteViewModel) }
+        item { ListesMinimize("Policier", onViewDetails, onListDetails, favoriteViewModel) }
     }
 }
 

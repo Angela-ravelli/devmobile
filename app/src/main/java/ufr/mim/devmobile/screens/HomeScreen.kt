@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.ButtonColors
 import androidx.compose.material3.MaterialTheme
@@ -24,6 +25,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import ufr.mim.devmobile.components.BookInList
 import ufr.mim.devmobile.components.BookSearchBar
 import ufr.mim.devmobile.components.ListesMinimize
 import ufr.mim.devmobile.components.StatsHomeCard
@@ -31,13 +33,15 @@ import ufr.mim.devmobile.mapper.BookRepository
 import ufr.mim.devmobile.viewmodel.UserViewModel
 import ufr.mim.devmobile.model.Books
 import ufr.mim.devmobile.ui.theme.MainPadding
+import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 
 
 @Composable
 fun HomeScreen(
     onViewDetails: (String) -> Unit,
     onListDetails: (String) -> Unit,
-    userViewModel: UserViewModel
+    userViewModel: UserViewModel,
+    favoriteViewModel: FavoriteViewModel
 ) {
     val userName by userViewModel.userName.collectAsState()
 
@@ -45,7 +49,7 @@ fun HomeScreen(
     var showDialog by remember { mutableStateOf(userName == null) }
     var inputName by remember { mutableStateOf("") }
 
-    // Afficher la pop-up si le prénom n'a pas été enregistré
+
     if (showDialog) {
         AlertDialog(
             onDismissRequest = {},
@@ -98,6 +102,11 @@ fun HomeScreen(
         )
     }
 
+    var searchValue by remember { mutableStateOf(TextFieldValue("")) }
+    val searchResults = BookRepository.bookList.filter { book ->
+        book.title.contains(searchValue.text, ignoreCase = true)
+    }
+
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -107,8 +116,6 @@ fun HomeScreen(
     ) {
         // Barre de recherche
         item {
-            var searchValue by remember { mutableStateOf(TextFieldValue("")) }
-
             BookSearchBar(
                 text = "Rechercher dans mes livres..",
                 value = searchValue,
@@ -126,11 +133,27 @@ fun HomeScreen(
             )
         }
 
-        // Cartes de statistiques et listes
+        if (searchResults.isEmpty()) {
+            items(searchResults) { book ->
+                BookInList(
+                    book = book,
+                    favoriteViewModel = favoriteViewModel,
+                    nameList = "Recherche",
+                    onViewDetails = onViewDetails
+                )
+            }
+        } else {
+            // Cartes de statistiques et listes
+            item { StatsHomeCard() }
+            item { ListesMinimize("Ma bibliothèque", onViewDetails, onListDetails, favoriteViewModel) }
+            item { ListesMinimize("Livres en cours", onViewDetails, onListDetails, favoriteViewModel) }
+            item { ListesMinimize("Livres en attente", onViewDetails, onListDetails, favoriteViewModel) }
+        }
+        /*// Cartes de statistiques et listes
         item { StatsHomeCard() }
-        item { ListesMinimize("Ma bibliothèque", onViewDetails, onListDetails) }
-        item { ListesMinimize("Livres en cours", onViewDetails, onListDetails) }
-        item { ListesMinimize("Livres en attente", onViewDetails, onListDetails) }
+        item { ListesMinimize("Ma bibliothèque", onViewDetails, onListDetails, favoriteViewModel) }
+        item { ListesMinimize("Livres en cours", onViewDetails, onListDetails, favoriteViewModel) }
+        item { ListesMinimize("Livres en attente", onViewDetails, onListDetails, favoriteViewModel) }*/
     }
 }
 

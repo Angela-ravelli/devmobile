@@ -1,5 +1,6 @@
 package ufr.mim.devmobile.screens
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
@@ -8,6 +9,10 @@ import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import ufr.mim.devmobile.components.BookInList
@@ -17,15 +22,16 @@ import ufr.mim.devmobile.model.Books
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 
 
-
-
+@SuppressLint("MutableCollectionMutableState")
 @Composable
 fun LibrairyScreen(nameList: String,
                    onViewDetails: (String) -> Unit,
                    favoriteViewModel: FavoriteViewModel
 ) {
+    val favorites by favoriteViewModel.favoriteBooks.collectAsState()
 
-    var books = nameList.listChoice()
+    val bookList by remember { mutableStateOf(BookRepository.bibliotheque.toMutableList()) }
+    val books = nameList.listChoice(favorites)
 
     LazyColumn(
         modifier = Modifier.fillMaxHeight(),
@@ -73,18 +79,22 @@ fun LibrairyScreen(nameList: String,
     }
 }
 
-fun String.listChoice() : MutableList<Books> {
+
+@Composable
+fun String.listChoice(favorites: Set<String>) : MutableList<Books> {
+    val fav: MutableList<Int> = favorites.mapNotNull { it.toIntOrNull() }.toMutableList()
+
     var listReturn = mutableListOf<Books>()
     var listInt = mutableListOf<Int>()
     when (this) {
-        "Ma bibliothèque" -> { listReturn = BookRepository.bookList }
+        "Ma bibliothèque" -> { listReturn = BookRepository.bibliotheque }
         "Livres en cours" -> { listInt = DataList.listEnCours }
         "Livres en attente" -> { listInt = DataList.listAttente }
         "Suggestions" -> { listInt = DataList.suggestion }
         "Romance" -> { listInt = DataList.romance }
         "Science-fiction" -> { listInt = DataList.science }
         "Policier" -> { listInt = DataList.policier }
-        "Livres Favoris" -> { listInt = DataList.listFavoris }
+        "Livres Favoris" -> { listInt = fav }
         "Livres à acheter" -> { listInt = DataList.listAcheter }
         "Livres déjà lus" -> { listInt = DataList.listLu }
         else -> { listReturn = BookRepository.bookList }

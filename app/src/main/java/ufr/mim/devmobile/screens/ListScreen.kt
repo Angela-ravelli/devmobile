@@ -21,9 +21,10 @@ import androidx.compose.ui.unit.dp
 import ufr.mim.devmobile.components.BookSearchBar
 import ufr.mim.devmobile.components.ListesMinimize
 import ufr.mim.devmobile.ui.theme.MainPadding
+import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 
 @Composable
-fun ListScreen(onViewDetails: (String) -> Unit, onListDetails: (String) -> Unit) {
+fun ListScreen(onViewDetails: (String) -> Unit, onListDetails: (String) -> Unit, favoriteViewModel: FavoriteViewModel) {
     LazyColumn(
         modifier = Modifier
             .fillMaxSize()
@@ -44,9 +45,9 @@ fun ListScreen(onViewDetails: (String) -> Unit, onListDetails: (String) -> Unit)
         }
 
         item {
-            ListesMinimize("Livres Favoris", onViewDetails, onListDetails)
-            ListesMinimize("Livres à acheter", onViewDetails, onListDetails)
-            ListesMinimize("Livres déjà lus", onViewDetails, onListDetails)
+            ListesMinimize("Livres Favoris", onViewDetails, onListDetails, favoriteViewModel)
+            ListesMinimize("Livres à acheter", onViewDetails, onListDetails, favoriteViewModel)
+            ListesMinimize("Livres déjà lus", onViewDetails, onListDetails, favoriteViewModel)
         }
     }
 }

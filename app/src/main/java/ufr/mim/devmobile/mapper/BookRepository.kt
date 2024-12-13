@@ -13,6 +13,7 @@ object BookRepository {
         bookListDto.books.map { bookMapper.mapBookDtoToBook(it) }.toMutableList()
     }
 
+    val bibliotheque: MutableList<Books> = bookList.toMutableList()
 
     fun updateBookProgress(bookId: String, newProgress: Int) {
         val book = bookList.find { book -> book.id.toString() == bookId }
