@@ -73,6 +73,6 @@ fun ProgressInput(
         val progress =
             textFieldValue.toFloatOrNull()?.coerceIn(0f, nbpagesFloat)?.div(nbpagesFloat) ?: 0f
 
-        PercentageProgressBar(progress, nbpagesFloat)
+        PercentageProgressBar(progress, nbpagesFloat, true)
     }
 }

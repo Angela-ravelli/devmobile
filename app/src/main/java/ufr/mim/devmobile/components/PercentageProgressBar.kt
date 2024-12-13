@@ -20,18 +20,29 @@ import ufr.mim.devmobile.ui.theme.MainPadding
 
 
 @Composable
-fun PercentageProgressBar(progress: Float, nbpages: Float) {
+fun PercentageProgressBar(progress: Float, nbpages: Float, big: Boolean) {
 
     Row(
         verticalAlignment = Alignment.CenterVertically,
         modifier = Modifier
-            .fillMaxSize()
+            .then(
+                if(big)
+                    Modifier.fillMaxSize()
+                else
+                    Modifier.size(120.dp)
+            )
+
             .padding(top = MainPadding)
     ) {
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(30.dp)
+                .then(
+                    if(big)
+                        Modifier.height(30.dp)
+                    else
+                        Modifier.height(20.dp)
+                )
                 .background(
                     color = MaterialTheme.colorScheme.surface,
                     shape = RoundedCornerShape(MainPadding)
