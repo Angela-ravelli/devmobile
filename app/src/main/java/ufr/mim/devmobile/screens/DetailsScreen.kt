@@ -20,6 +20,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import ufr.mim.devmobile.components.ProgressInput
@@ -69,12 +70,17 @@ fun DetailsScreen(
                             Icons.Filled.Favorite
                         else
                             Icons.Outlined.FavoriteBorder,
+                        tint =
+                        if(isFav.contains(id))
+                            Color.Red
+                        else
+                            MaterialTheme.colorScheme.onPrimary,
                         contentDescription =
                         if (isFav.contains(id))
                             "Supprimer des favoris"
                         else
                             "Ajouter aux favoris",
-                        modifier = Modifier.size(48.dp)
+                        modifier = Modifier.size(48.dp),
                     )
                 }
             }

@@ -57,6 +57,7 @@ fun BookInList(
                 }
             ) {
                 Icon(imageVector = Icons.Filled.Favorite,
+                    tint = Color.Red,
                     contentDescription = "Supprimer des favoris",
                     modifier = Modifier.size(48.dp)
                 )
