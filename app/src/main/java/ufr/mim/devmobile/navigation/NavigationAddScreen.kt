@@ -13,7 +13,6 @@ import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 import ufr.mim.devmobile.screens.AddDetailsScreen
 import ufr.mim.devmobile.screens.AddScreen
 import ufr.mim.devmobile.screens.DetailsScreen
-import androidx.navigation.compose.rememberNavController
 import ufr.mim.devmobile.screens.LibrairyScreen
 
 @Composable
@@ -22,7 +21,6 @@ fun NavigationAddScreen(
     navigationViewModel: NavigationViewModel
 ) {
 
-    //val navController = rememberNavController()
     val navController = navigationViewModel.navController
 
     val currentBackStackEntry by navController!!.currentBackStackEntryAsState()
@@ -88,5 +86,4 @@ fun NavigationAddScreen(
             }
         }
     }
-
 }

@@ -12,7 +12,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -144,6 +143,10 @@ fun AddDetailsScreen(
 
                 Button(
                     onClick = {
+                        if(releaseDate == "Date de sortie")
+                            releaseDate = "2010"
+                        if(pageCount == "Nombre de pages")
+                            pageCount = "400"
                         BookRepository.bibliotheque.add(Books(
                             BookRepository.bibliotheque.last().id+1,
                             bookTitle,
@@ -156,7 +159,7 @@ fun AddDetailsScreen(
                             emptyList(),
                             publisher,
                             ""
-                        ));
+                        ))
                         onAdd()
                     },
                     colors = ButtonDefaults.buttonColors(

@@ -20,6 +20,7 @@ class MainActivity : ComponentActivity() {
 
     private val favoriteViewModel by viewModels<FavoriteViewModel> {
         object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return FavoriteViewModel(dataStoreManager) as T
             }
@@ -28,6 +29,7 @@ class MainActivity : ComponentActivity() {
 
     private val userViewModel by viewModels<UserViewModel> {
         object : ViewModelProvider.Factory {
+            @Suppress("UNCHECKED_CAST")
             override fun <T : ViewModel> create(modelClass: Class<T>): T {
                 return UserViewModel(dataStoreManager) as T
             }

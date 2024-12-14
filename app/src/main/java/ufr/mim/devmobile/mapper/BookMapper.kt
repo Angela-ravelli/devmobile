@@ -9,12 +9,12 @@ class BookMapper {
             Books(
                 id = id,
                 title = title,
-                year = year.toInt(),
+                year = year,
                 genre = genre.split(", "),
                 author = author,
                 plot = plot,
-                progression = progression.toInt(),
-                pages = pages.toInt(),
+                progression = progression,
+                pages = pages,
                 etiquette = etiquette.split(", "),
                 editor = editor,
                 image = image

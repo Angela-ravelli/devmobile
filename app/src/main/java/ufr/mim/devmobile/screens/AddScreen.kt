@@ -26,7 +26,6 @@ import androidx.compose.ui.unit.dp
 import ufr.mim.devmobile.components.BookInList
 import ufr.mim.devmobile.components.BookSearchBar
 import ufr.mim.devmobile.components.ListesMinimize
-import ufr.mim.devmobile.components.StatsHomeCard
 import ufr.mim.devmobile.components.dropShadow
 import ufr.mim.devmobile.mapper.BookRepository
 import ufr.mim.devmobile.ui.theme.MainPadding

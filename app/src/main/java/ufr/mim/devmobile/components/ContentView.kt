@@ -47,13 +47,9 @@ fun ContentView(
         MyIcon(3, { selectedTab = 3 }, analyticsFilled, analyticsOutlined)
     )
 
-    val addScreenNavController = rememberNavController()
-
     val homeNavController = rememberNavController()
     val addNavController = rememberNavController()
     val listNavController = rememberNavController()
-
-   // val navigationViewModel = remember { NavigationViewModel(currentNavController) } // Instance du ViewModel partagé
 
     // Obtenir le bon NavController actif
     navigationViewModel.navController = when (selectedTab) {

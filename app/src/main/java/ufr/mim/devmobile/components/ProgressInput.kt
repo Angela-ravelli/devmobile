@@ -1,5 +1,6 @@
 package ufr.mim.devmobile.components
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.height
@@ -17,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.unit.dp
+import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable
 fun ProgressInput(
@@ -34,7 +36,9 @@ fun ProgressInput(
         }
     }
 
-    Column {
+    Column(
+        verticalArrangement = Arrangement.spacedBy(MainPadding)
+    ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
         ) {

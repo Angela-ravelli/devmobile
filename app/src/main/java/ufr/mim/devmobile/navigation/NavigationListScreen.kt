@@ -8,7 +8,6 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 import ufr.mim.devmobile.screens.DetailsScreen
@@ -17,7 +16,7 @@ import ufr.mim.devmobile.screens.ListScreen
 
 @Composable
 fun NavigationListScreen(favoriteViewModel: FavoriteViewModel, navigationViewModel: NavigationViewModel) {
-    //val navController = rememberNavController()
+
     val navController = navigationViewModel.navController
 
     val currentBackStackEntry by navController!!.currentBackStackEntryAsState()
