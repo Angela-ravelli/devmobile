@@ -15,6 +15,7 @@ import androidx.compose.material3.TextButton
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -40,14 +41,15 @@ fun HomeScreen(
     onListDetails: (String) -> Unit,
     userViewModel: UserViewModel = hiltViewModel(),
 ) {
-    val userName by userViewModel.userName.collectAsState()
+    val userState by userViewModel.stateFlow.collectAsState()
 
     // État de la pop-up
-    var showDialog by remember { mutableStateOf(userName == null) }
+    var showDialog by remember { mutableStateOf(userState.userName == null) }
     var inputName by remember { mutableStateOf("") }
 
-
-    if (showDialog) {
+    // Ajout de la condition !userState.isLoading pour éviter
+    // d'afficher la popup pendant le chargement du DataStore
+    if (showDialog && !userState.isLoading) {
         AlertDialog(
             onDismissRequest = {},
             title = {
@@ -124,7 +126,7 @@ fun HomeScreen(
         item {
             Text(
                 modifier = Modifier.padding(MainPadding, 0.dp),
-                text = "Bonjour ${userName ?: "Invité"} !",
+                text = "Bonjour ${userState.userName ?: "Invité"} !",
                 color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.titleLarge
             )

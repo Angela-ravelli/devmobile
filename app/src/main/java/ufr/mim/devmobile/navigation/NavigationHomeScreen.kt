@@ -19,10 +19,10 @@ import ufr.mim.devmobile.screens.LibrairyScreen
 fun NavigationHomeScreen() {
     // View Models
     val navigationViewModel: NavigationViewModel = viewModel()
-
     val navController = navigationViewModel.navController
 
     val currentBackStackEntry by navController!!.currentBackStackEntryAsState()
+
     LaunchedEffect(currentBackStackEntry) {
         val isInDepth = currentBackStackEntry?.destination?.route != HomeScreens.HomeScreen.route
         navigationViewModel.setInDepthNavigation(isInDepth)

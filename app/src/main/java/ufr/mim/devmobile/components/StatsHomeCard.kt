@@ -30,7 +30,7 @@ fun StatsHomeCard() {
             containerColor = MaterialTheme.colorScheme.tertiary
         ),
         modifier = Modifier
-            .padding(32.dp, MainPadding)
+            .padding(MainPadding)
             .fillMaxWidth()
     ) {
         Column(

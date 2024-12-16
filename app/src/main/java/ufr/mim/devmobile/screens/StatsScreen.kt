@@ -28,7 +28,7 @@ import ufr.mim.devmobile.ui.theme.MainPadding
 fun StatsScreen(
     userViewModel: UserViewModel = hiltViewModel(),
 ) {
-    val userName by userViewModel.userName.collectAsState()
+    val userState by userViewModel.stateFlow.collectAsState()
 
     LazyColumn(
         modifier = Modifier
@@ -39,7 +39,7 @@ fun StatsScreen(
     ) {
         item {
             Text(
-                text = "Bonjour $userName,",
+                text = "Bonjour ${userState.userName},",
                 color = MaterialTheme.colorScheme.onBackground
             )
         }

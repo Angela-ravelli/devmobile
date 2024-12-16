@@ -40,7 +40,9 @@ fun ListesMinimize(
     ){
         Text(
             modifier = Modifier
-                .padding(start = MainPadding),
+                .padding(start = MainPadding)
+                // On évite que le texte soit trop collé à la liste
+                .padding(bottom = 8.dp),
             text = nameList
         )
 
@@ -54,9 +56,11 @@ fun ListesMinimize(
                 ),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            val i : Int
-            if(nameList.listChoice(favorites).size>=6){ i = 6 }
-            else { i = nameList.listChoice(favorites).size }
+            val i: Int = if (nameList.listChoice(favorites).size >= 6) {
+                6
+            } else {
+                nameList.listChoice(favorites).size
+            }
 
             items(i) { index ->
                 val startPadding = if(index == 0) MainPadding else 0.dp

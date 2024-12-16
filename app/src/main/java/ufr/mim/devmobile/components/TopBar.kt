@@ -34,7 +34,9 @@ fun MyTopBar(
     val isInDepthNavigation by navigationViewModel.isInDepthNavigation.collectAsState()
 
     TopAppBar(
-        modifier = Modifier.height(80.dp),
+        // Il vaut mieux laisser la taille par défaut
+        // Sinon, il y un risque de mauvais rendu sur certains téléphones
+        //modifier = Modifier.height(80.dp),
         title = {
             Row(verticalAlignment = Alignment.CenterVertically) {
                 if (isInDepthNavigation) {
