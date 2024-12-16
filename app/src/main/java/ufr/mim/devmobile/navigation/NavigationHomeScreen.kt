@@ -4,23 +4,21 @@ import ufr.mim.devmobile.viewmodel.NavigationViewModel
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
-import ufr.mim.devmobile.viewmodel.FavoriteViewModel
-import ufr.mim.devmobile.viewmodel.UserViewModel
 import ufr.mim.devmobile.screens.DetailsScreen
 import ufr.mim.devmobile.screens.HomeScreen
 import ufr.mim.devmobile.screens.LibrairyScreen
 
 @Composable
-fun NavigationHomeScreen(
-                         favoriteViewModel: FavoriteViewModel,
-                         userViewModel: UserViewModel,
-                         navigationViewModel: NavigationViewModel
-) {
+fun NavigationHomeScreen() {
+    // View Models
+    val navigationViewModel: NavigationViewModel = viewModel()
 
     val navController = navigationViewModel.navController
 
@@ -43,8 +41,6 @@ fun NavigationHomeScreen(
                     onListDetails = { nameList ->
                         navController.navigate(HomeScreens.LibrairyScreen.route + "/$nameList")
                     },
-                    userViewModel = userViewModel,
-                    favoriteViewModel = favoriteViewModel
                 )
             }
 
@@ -55,7 +51,6 @@ fun NavigationHomeScreen(
                 backStackEntry.arguments?.getString("id")?.let {
                     DetailsScreen(
                         id = it,
-                        favoriteViewModel = favoriteViewModel
                     )
                 }
             }
@@ -70,7 +65,6 @@ fun NavigationHomeScreen(
                         onViewDetails = { id ->
                             navController.navigate(HomeScreens.DetailsScreen.route + "/$id")
                         },
-                        favoriteViewModel = favoriteViewModel,
                     )
                 }
             }

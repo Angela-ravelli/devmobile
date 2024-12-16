@@ -23,6 +23,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import ufr.mim.devmobile.components.ProgressInput
 import ufr.mim.devmobile.data.DataList
 import ufr.mim.devmobile.mapper.BookRepository
@@ -33,7 +34,7 @@ import ufr.mim.devmobile.ui.theme.MainPadding
 @Composable
 fun DetailsScreen(
     id: String,
-    favoriteViewModel: FavoriteViewModel,
+    favoriteViewModel: FavoriteViewModel = hiltViewModel(),
 ) {
     val isFav by favoriteViewModel.favoriteBooks.collectAsState()
 

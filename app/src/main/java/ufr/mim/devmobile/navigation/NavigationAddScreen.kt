@@ -4,23 +4,22 @@ import ufr.mim.devmobile.viewmodel.NavigationViewModel
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
-import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 import ufr.mim.devmobile.screens.AddDetailsScreen
 import ufr.mim.devmobile.screens.AddScreen
 import ufr.mim.devmobile.screens.DetailsScreen
 import ufr.mim.devmobile.screens.LibrairyScreen
 
 @Composable
-fun NavigationAddScreen(
-    favoriteViewModel: FavoriteViewModel,
-    navigationViewModel: NavigationViewModel
-) {
-
+fun NavigationAddScreen() {
+    // View Models
+    val navigationViewModel: NavigationViewModel = viewModel()
     val navController = navigationViewModel.navController
 
     val currentBackStackEntry by navController!!.currentBackStackEntryAsState()
@@ -45,7 +44,6 @@ fun NavigationAddScreen(
                     onListDetails = { nameList ->
                         navController.navigate(AddScreens.LibrairyScreen.route+ "/$nameList")
                     },
-                    favoriteViewModel = favoriteViewModel
                 )
             }
 
@@ -65,7 +63,6 @@ fun NavigationAddScreen(
                 backStackEntry.arguments?.getString("id")?.let {
                     DetailsScreen(
                         id = it,
-                        favoriteViewModel = favoriteViewModel
                     )
                 }
             }
@@ -80,7 +77,6 @@ fun NavigationAddScreen(
                         onViewDetails = { id ->
                             navController.navigate(AddScreens.DetailsScreen.route + "/$id")
                         },
-                        favoriteViewModel = favoriteViewModel,
                     )
                 }
             }

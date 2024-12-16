@@ -29,6 +29,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import ufr.mim.devmobile.mapper.BookRepository
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 import ufr.mim.devmobile.mapper.mapToMyImageResource
@@ -38,9 +39,10 @@ import ufr.mim.devmobile.ui.theme.MainPadding
 @Composable
 fun BookInList(
     book: Books,
-    favoriteViewModel: FavoriteViewModel,
+    favoriteViewModel: FavoriteViewModel = hiltViewModel(),
     nameList: String,
-    onViewDetails: (String) -> Unit){
+    onViewDetails: (String) -> Unit
+) {
     val isFav by favoriteViewModel.favoriteBooks.collectAsState()
     val index = book.id.toString()
 

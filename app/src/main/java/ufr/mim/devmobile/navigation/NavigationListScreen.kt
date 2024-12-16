@@ -4,22 +4,28 @@ import ufr.mim.devmobile.viewmodel.NavigationViewModel
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.navArgument
-import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 import ufr.mim.devmobile.screens.DetailsScreen
 import ufr.mim.devmobile.screens.LibrairyScreen
 import ufr.mim.devmobile.screens.ListScreen
 
 @Composable
-fun NavigationListScreen(favoriteViewModel: FavoriteViewModel, navigationViewModel: NavigationViewModel) {
+fun NavigationListScreen() {
+    // View Models
+    val navigationViewModel: NavigationViewModel = viewModel()
 
     val navController = navigationViewModel.navController
 
-    val currentBackStackEntry by navController!!.currentBackStackEntryAsState()
+    // On évite les force casts si possible
+    val currentBackStackEntry: NavBackStackEntry? = navController?.currentBackStackEntryAsState()?.value
+
     LaunchedEffect(currentBackStackEntry) {
         val isInDepth = currentBackStackEntry?.destination?.route != ListScreens.ListScreen.route
         navigationViewModel.setInDepthNavigation(isInDepth)
@@ -38,7 +44,6 @@ fun NavigationListScreen(favoriteViewModel: FavoriteViewModel, navigationViewMod
                     onListDetails = { nameList ->
                         navController.navigate(ListScreens.LibrairyScreen.route + "/$nameList")
                     },
-                    favoriteViewModel = favoriteViewModel
                 )
             }
 
@@ -49,7 +54,6 @@ fun NavigationListScreen(favoriteViewModel: FavoriteViewModel, navigationViewMod
                 backStackEntry.arguments?.getString("id")?.let {
                     DetailsScreen(
                         id = it,
-                        favoriteViewModel = favoriteViewModel
                     )
                 }
             }
@@ -64,7 +68,6 @@ fun NavigationListScreen(favoriteViewModel: FavoriteViewModel, navigationViewMod
                         onViewDetails = { id ->
                             navController.navigate(ListScreens.DetailsScreen.route + "/$id")
                         },
-                        favoriteViewModel = favoriteViewModel,
                     )
                 }
             }

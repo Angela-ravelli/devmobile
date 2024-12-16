@@ -12,10 +12,10 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.vectorResource
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.compose.rememberNavController
 import ufr.mim.devmobile.R
-import ufr.mim.devmobile.viewmodel.FavoriteViewModel
-import ufr.mim.devmobile.viewmodel.UserViewModel
 import ufr.mim.devmobile.navigation.NavigationAddScreen
 import ufr.mim.devmobile.navigation.NavigationHomeScreen
 import ufr.mim.devmobile.navigation.NavigationListScreen
@@ -23,12 +23,8 @@ import ufr.mim.devmobile.screens.StatsScreen
 import ufr.mim.devmobile.viewmodel.NavigationViewModel
 
 @Composable
-fun ContentView(
-                favoriteViewModel: FavoriteViewModel,
-                userViewModel: UserViewModel,
-                navigationViewModel: NavigationViewModel
-) {
-
+fun ContentView() {
+    val navigationViewModel: NavigationViewModel = viewModel()
     var selectedTab by remember { mutableIntStateOf(0) }
 
     val homeFilled = ImageVector.vectorResource(id = R.drawable.home_filled)
@@ -71,29 +67,10 @@ fun ContentView(
             modifier = Modifier.padding(paddingValues)
         ) { tabIndex ->
             when (tabIndex) {
-                0 -> {
-                    NavigationHomeScreen(
-                        favoriteViewModel,
-                        userViewModel,
-                        navigationViewModel
-                    )
-                }
-                1 -> {
-                    NavigationAddScreen(
-                        favoriteViewModel,
-                        navigationViewModel
-                    )
-                }
-
-                2 -> {
-                    NavigationListScreen(
-                        favoriteViewModel,
-                        navigationViewModel
-                    )
-                }
-                3 -> {
-                    StatsScreen(userViewModel)
-                }
+                0 -> { NavigationHomeScreen() }
+                1 -> { NavigationAddScreen() }
+                2 -> { NavigationListScreen() }
+                3 -> { StatsScreen() }
             }
         }
     }

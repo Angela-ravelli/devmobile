@@ -19,12 +19,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import ufr.mim.devmobile.R
 import ufr.mim.devmobile.viewmodel.UserViewModel
 import ufr.mim.devmobile.ui.theme.MainPadding
 
 @Composable
-fun StatsScreen(userViewModel: UserViewModel){
+fun StatsScreen(
+    userViewModel: UserViewModel = hiltViewModel(),
+) {
     val userName by userViewModel.userName.collectAsState()
 
     LazyColumn(

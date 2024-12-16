@@ -16,16 +16,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import ufr.mim.devmobile.components.BookInList
 import ufr.mim.devmobile.components.BookSearchBar
 import ufr.mim.devmobile.components.ListesMinimize
 import ufr.mim.devmobile.mapper.BookRepository
 import ufr.mim.devmobile.ui.theme.MainPadding
-import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 
 @Composable
-fun ListScreen(onViewDetails: (String) -> Unit, onListDetails: (String) -> Unit,
-               favoriteViewModel: FavoriteViewModel) {
+fun ListScreen(
+    onViewDetails: (String) -> Unit,
+    onListDetails: (String) -> Unit,
+) {
 
     var searchValue by remember { mutableStateOf(TextFieldValue("")) }
     val searchResults = BookRepository.bookList.filter { book ->
@@ -53,16 +55,15 @@ fun ListScreen(onViewDetails: (String) -> Unit, onListDetails: (String) -> Unit,
             items(searchResults) { book ->
                 BookInList(
                     book = book,
-                    favoriteViewModel = favoriteViewModel,
                     nameList = "Recherche",
                     onViewDetails = onViewDetails
                 )
             }
         } else {
             item {
-                ListesMinimize("Livres Favoris", onViewDetails, onListDetails, favoriteViewModel)
-                ListesMinimize("Livres à acheter", onViewDetails, onListDetails, favoriteViewModel)
-                ListesMinimize("Livres déjà lus", onViewDetails, onListDetails, favoriteViewModel)
+                ListesMinimize("Livres Favoris", onViewDetails, onListDetails)
+                ListesMinimize("Livres à acheter", onViewDetails, onListDetails)
+                ListesMinimize("Livres déjà lus", onViewDetails, onListDetails)
             }
         }
     }

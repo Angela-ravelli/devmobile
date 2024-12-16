@@ -29,12 +29,13 @@ import ufr.mim.devmobile.components.ListesMinimize
 import ufr.mim.devmobile.components.dropShadow
 import ufr.mim.devmobile.mapper.BookRepository
 import ufr.mim.devmobile.ui.theme.MainPadding
-import ufr.mim.devmobile.viewmodel.FavoriteViewModel
-
 
 @Composable
-fun AddScreen(onDetails: (String) -> Unit, onViewDetails: (String) -> Unit,
-              onListDetails: (String) -> Unit, favoriteViewModel: FavoriteViewModel) {
+fun AddScreen(
+    onDetails: (String) -> Unit,
+    onViewDetails: (String) -> Unit,
+    onListDetails: (String) -> Unit,
+) {
 
     var searchValue by remember { mutableStateOf(TextFieldValue("")) }
     val searchResults = BookRepository.bookList.filter { book ->
@@ -90,17 +91,16 @@ fun AddScreen(onDetails: (String) -> Unit, onViewDetails: (String) -> Unit,
             items(searchResults) { book ->
                 BookInList(
                     book = book,
-                    favoriteViewModel = favoriteViewModel,
                     nameList = "Recherche",
                     onViewDetails = onViewDetails
                 )
             }
         } else {
             // Listes par genres
-            item { ListesMinimize("Suggestions", onViewDetails, onListDetails, favoriteViewModel) }
-            item { ListesMinimize("Romance", onViewDetails, onListDetails, favoriteViewModel) }
-            item { ListesMinimize("Science-fiction", onViewDetails, onListDetails, favoriteViewModel) }
-            item { ListesMinimize("Policier", onViewDetails, onListDetails, favoriteViewModel) }
+            item { ListesMinimize("Suggestions", onViewDetails, onListDetails) }
+            item { ListesMinimize("Romance", onViewDetails, onListDetails) }
+            item { ListesMinimize("Science-fiction", onViewDetails, onListDetails) }
+            item { ListesMinimize("Policier", onViewDetails, onListDetails) }
         }
 
     }

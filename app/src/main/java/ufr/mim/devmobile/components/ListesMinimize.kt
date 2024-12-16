@@ -18,13 +18,18 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import ufr.mim.devmobile.mapper.mapToMyImageResource
 import ufr.mim.devmobile.ui.theme.MainPadding
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 
 @Composable
-fun ListesMinimize(nameList: String, onViewDetails: (String) -> Unit,
-                   onListDetails: (String) -> Unit, favoriteViewModel: FavoriteViewModel) {
+fun ListesMinimize(
+    nameList: String,
+    onViewDetails: (String) -> Unit,
+    onListDetails: (String) -> Unit,
+    favoriteViewModel: FavoriteViewModel = hiltViewModel()
+) {
     val favorites by favoriteViewModel.favoriteBooks.collectAsState()
 
     // Affiche le nom de la liste

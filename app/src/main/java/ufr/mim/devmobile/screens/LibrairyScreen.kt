@@ -17,16 +17,17 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import ufr.mim.devmobile.components.BookInList
 import ufr.mim.devmobile.components.listChoice
 import ufr.mim.devmobile.viewmodel.FavoriteViewModel
 
-
 @SuppressLint("MutableCollectionMutableState")
 @Composable
-fun LibrairyScreen(nameList: String,
-                   onViewDetails: (String) -> Unit,
-                   favoriteViewModel: FavoriteViewModel
+fun LibrairyScreen(
+    nameList: String,
+    onViewDetails: (String) -> Unit,
+    favoriteViewModel: FavoriteViewModel = hiltViewModel()
 ) {
     val favorites by favoriteViewModel.favoriteBooks.collectAsState()
 
@@ -61,7 +62,6 @@ fun LibrairyScreen(nameList: String,
                 ) {
                     BookInList(
                         book = books[firstIndex],
-                        favoriteViewModel = favoriteViewModel,
                         nameList = nameList,
                         onViewDetails = onViewDetails
                     )
@@ -76,7 +76,6 @@ fun LibrairyScreen(nameList: String,
                     ) {
                         BookInList(
                             book = books[firstIndex + 1],
-                            favoriteViewModel = favoriteViewModel,
                             nameList = nameList,
                             onViewDetails = onViewDetails
                         )

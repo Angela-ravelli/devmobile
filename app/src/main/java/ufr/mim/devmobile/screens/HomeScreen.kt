@@ -25,23 +25,20 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import ufr.mim.devmobile.components.BookInList
 import ufr.mim.devmobile.components.BookSearchBar
 import ufr.mim.devmobile.components.ListesMinimize
 import ufr.mim.devmobile.components.StatsHomeCard
 import ufr.mim.devmobile.mapper.BookRepository
 import ufr.mim.devmobile.viewmodel.UserViewModel
-import ufr.mim.devmobile.model.Books
 import ufr.mim.devmobile.ui.theme.MainPadding
-import ufr.mim.devmobile.viewmodel.FavoriteViewModel
-
 
 @Composable
 fun HomeScreen(
     onViewDetails: (String) -> Unit,
     onListDetails: (String) -> Unit,
-    userViewModel: UserViewModel,
-    favoriteViewModel: FavoriteViewModel
+    userViewModel: UserViewModel = hiltViewModel(),
 ) {
     val userName by userViewModel.userName.collectAsState()
 
@@ -137,7 +134,6 @@ fun HomeScreen(
             items(searchResults) { book ->
                 BookInList(
                     book = book,
-                    favoriteViewModel = favoriteViewModel,
                     nameList = "Recherche",
                     onViewDetails = onViewDetails
                 )
@@ -145,9 +141,9 @@ fun HomeScreen(
         } else {
             // Cartes de statistiques et listes
             item { StatsHomeCard() }
-            item { ListesMinimize("Ma bibliothèque", onViewDetails, onListDetails, favoriteViewModel) }
-            item { ListesMinimize("Livres en cours", onViewDetails, onListDetails, favoriteViewModel) }
-            item { ListesMinimize("Livres en attente", onViewDetails, onListDetails, favoriteViewModel) }
+            item { ListesMinimize("Ma bibliothèque", onViewDetails, onListDetails) }
+            item { ListesMinimize("Livres en cours", onViewDetails, onListDetails) }
+            item { ListesMinimize("Livres en attente", onViewDetails, onListDetails) }
         }
     }
 }
